@@ -11,9 +11,9 @@ public class Operation {
 	}
 	
 	 public void showCombination() {
-		for (Boolean firt : values) {
+		for (Boolean first : values) {
 			for (Boolean second : values) {
-				System.out.println(firt + " " + " - " + " " + second + " = " + doOperation.operation(firt, second));
+				System.out.println(first + " " + " - " + " " + second + " = " + doOperation.operation(first, second));
 			}
 		}
 	}
