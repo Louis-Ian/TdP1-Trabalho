@@ -5,4 +5,4 @@ Repositório do trabalho da cadeira de Técnicas de Programação 2020.1
 Interface feita utilizando o JFrame no Netbeans
 
 # Link Figma
-https://www.figma.com/file/rvE29ldwHqKNMHdr11d4Bg/Projeto-Final---T%C3%A9cnicas-1?node-id=0%3A1
+<a>https://www.figma.com/file/rvE29ldwHqKNMHdr11d4Bg/Projeto-Final---T%C3%A9cnicas-1?node-id=0%3A1</a>
