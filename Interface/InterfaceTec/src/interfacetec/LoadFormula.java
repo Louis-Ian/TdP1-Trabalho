@@ -5,6 +5,7 @@
  */
 package interfacetec;
 
+import java.awt.Color;
 import java.io.File;
 import javax.swing.JFileChooser;
 
@@ -20,6 +21,8 @@ public class LoadFormula extends javax.swing.JFrame {
     public LoadFormula() {
         initComponents();
         setLocationRelativeTo(null);
+        Color background = new Color(190,255,255); 
+        this.getContentPane().setBackground(background);
     }
 
     /**
@@ -37,7 +40,6 @@ public class LoadFormula extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(1366, 768));
         setSize(new java.awt.Dimension(1366, 768));
 
         load_menu.setFont(new java.awt.Font("Georgia", 0, 24)); // NOI18N
@@ -54,14 +56,15 @@ public class LoadFormula extends javax.swing.JFrame {
         Load_text_formula.setEditable(false);
         Load_text_formula.setBackground(new java.awt.Color(255, 255, 255));
         Load_text_formula.setFont(new java.awt.Font("Georgia", 0, 24)); // NOI18N
-        Load_text_formula.setForeground(new java.awt.Color(153, 153, 153));
-        Load_text_formula.setText(" Add JSON File");
+        Load_text_formula.setForeground(new java.awt.Color(0, 204, 204));
+        Load_text_formula.setText(" Add TXT File");
         Load_text_formula.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
 
         load_search.setBackground(new java.awt.Color(255, 255, 255));
         load_search.setFont(new java.awt.Font("Georgia", 0, 36)); // NOI18N
         load_search.setText("Search >");
         load_search.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        load_search.setContentAreaFilled(false);
         load_search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 load_searchActionPerformed(evt);

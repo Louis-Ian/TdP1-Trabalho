@@ -5,6 +5,13 @@
  */
 package interfacetec;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.plaf.FontUIResource;
+
 /**
  *
  * @author babyp
@@ -17,6 +24,9 @@ public class NewFormula extends javax.swing.JFrame {
     public NewFormula() {
         initComponents();
         setLocationRelativeTo(null);
+        
+        Color background = new Color(190,255,255); 
+        this.getContentPane().setBackground(background);
     }
 
     /**
@@ -28,6 +38,7 @@ public class NewFormula extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialog1 = new javax.swing.JDialog();
         new_menu = new javax.swing.JButton();
         new_text = new javax.swing.JTextField();
         new_result = new javax.swing.JButton();
@@ -56,6 +67,20 @@ public class NewFormula extends javax.swing.JFrame {
         new_op_but_closepar = new javax.swing.JButton();
         new_op_but_APAGAR = new javax.swing.JButton();
 
+        jDialog1.setTitle("Confirmação");
+        jDialog1.setBackground(new java.awt.Color(0, 0, 255));
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1366, 768));
@@ -79,8 +104,10 @@ public class NewFormula extends javax.swing.JFrame {
 
         new_result.setBackground(new java.awt.Color(255, 255, 255));
         new_result.setFont(new java.awt.Font("Georgia", 0, 36)); // NOI18N
-        new_result.setText("Resultado >");
+        new_result.setText("Result >");
+        new_result.setActionCommand("Result >");
         new_result.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        new_result.setContentAreaFilled(false);
         new_result.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 new_resultActionPerformed(evt);
@@ -98,6 +125,7 @@ public class NewFormula extends javax.swing.JFrame {
         new_prop_but_A.setText("A");
         new_prop_but_A.setToolTipText("");
         new_prop_but_A.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        new_prop_but_A.setContentAreaFilled(false);
         new_prop_but_A.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 new_prop_but_AActionPerformed(evt);
@@ -109,6 +137,7 @@ public class NewFormula extends javax.swing.JFrame {
         new_prop_but_B.setText("B");
         new_prop_but_B.setToolTipText("");
         new_prop_but_B.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        new_prop_but_B.setContentAreaFilled(false);
         new_prop_but_B.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 new_prop_but_BActionPerformed(evt);
@@ -120,6 +149,7 @@ public class NewFormula extends javax.swing.JFrame {
         new_prop_but_C.setText("C");
         new_prop_but_C.setToolTipText("");
         new_prop_but_C.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        new_prop_but_C.setContentAreaFilled(false);
         new_prop_but_C.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 new_prop_but_CActionPerformed(evt);
@@ -130,6 +160,7 @@ public class NewFormula extends javax.swing.JFrame {
         new_prop_but_D.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
         new_prop_but_D.setText("D");
         new_prop_but_D.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        new_prop_but_D.setContentAreaFilled(false);
         new_prop_but_D.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 new_prop_but_DActionPerformed(evt);
@@ -140,6 +171,7 @@ public class NewFormula extends javax.swing.JFrame {
         new_prop_but_E.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
         new_prop_but_E.setText("E");
         new_prop_but_E.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        new_prop_but_E.setContentAreaFilled(false);
         new_prop_but_E.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 new_prop_but_EActionPerformed(evt);
@@ -151,6 +183,7 @@ public class NewFormula extends javax.swing.JFrame {
         new_prop_but_F.setForeground(new java.awt.Color(255, 51, 51));
         new_prop_but_F.setText("F");
         new_prop_but_F.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 51, 51), 2, true));
+        new_prop_but_F.setContentAreaFilled(false);
         new_prop_but_F.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 new_prop_but_FActionPerformed(evt);
@@ -162,6 +195,7 @@ public class NewFormula extends javax.swing.JFrame {
         new_prop_but_V.setForeground(new java.awt.Color(0, 153, 0));
         new_prop_but_V.setText("V");
         new_prop_but_V.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 153, 0), 2, true));
+        new_prop_but_V.setContentAreaFilled(false);
         new_prop_but_V.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 new_prop_but_VActionPerformed(evt);
@@ -172,6 +206,7 @@ public class NewFormula extends javax.swing.JFrame {
         new_prop_but_H.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
         new_prop_but_H.setText("H");
         new_prop_but_H.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        new_prop_but_H.setContentAreaFilled(false);
         new_prop_but_H.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 new_prop_but_HActionPerformed(evt);
@@ -182,6 +217,7 @@ public class NewFormula extends javax.swing.JFrame {
         new_prop_but_I.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
         new_prop_but_I.setText("I");
         new_prop_but_I.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        new_prop_but_I.setContentAreaFilled(false);
         new_prop_but_I.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 new_prop_but_IActionPerformed(evt);
@@ -192,6 +228,7 @@ public class NewFormula extends javax.swing.JFrame {
         new_prop_but_J.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
         new_prop_but_J.setText("J");
         new_prop_but_J.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        new_prop_but_J.setContentAreaFilled(false);
         new_prop_but_J.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 new_prop_but_JActionPerformed(evt);
@@ -202,6 +239,7 @@ public class NewFormula extends javax.swing.JFrame {
         new_prop_but_K.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
         new_prop_but_K.setText("K");
         new_prop_but_K.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        new_prop_but_K.setContentAreaFilled(false);
         new_prop_but_K.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 new_prop_but_KActionPerformed(evt);
@@ -212,6 +250,7 @@ public class NewFormula extends javax.swing.JFrame {
         new_prop_but_G.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
         new_prop_but_G.setText("G");
         new_prop_but_G.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        new_prop_but_G.setContentAreaFilled(false);
         new_prop_but_G.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 new_prop_but_GActionPerformed(evt);
@@ -294,6 +333,7 @@ public class NewFormula extends javax.swing.JFrame {
         new_op_but_not.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
         new_op_but_not.setText("¬");
         new_op_but_not.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        new_op_but_not.setContentAreaFilled(false);
         new_op_but_not.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 new_op_but_notActionPerformed(evt);
@@ -304,6 +344,7 @@ public class NewFormula extends javax.swing.JFrame {
         new_op_but_or.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
         new_op_but_or.setText("OR");
         new_op_but_or.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        new_op_but_or.setContentAreaFilled(false);
         new_op_but_or.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 new_op_but_orActionPerformed(evt);
@@ -314,6 +355,7 @@ public class NewFormula extends javax.swing.JFrame {
         new_op_but_and.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
         new_op_but_and.setText("AND");
         new_op_but_and.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        new_op_but_and.setContentAreaFilled(false);
         new_op_but_and.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 new_op_but_andActionPerformed(evt);
@@ -324,6 +366,7 @@ public class NewFormula extends javax.swing.JFrame {
         new_op_but_imply.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
         new_op_but_imply.setText("-->");
         new_op_but_imply.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        new_op_but_imply.setContentAreaFilled(false);
         new_op_but_imply.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 new_op_but_implyActionPerformed(evt);
@@ -334,6 +377,7 @@ public class NewFormula extends javax.swing.JFrame {
         new_prop_but_xnor.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
         new_prop_but_xnor.setText("<-->");
         new_prop_but_xnor.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        new_prop_but_xnor.setContentAreaFilled(false);
         new_prop_but_xnor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 new_prop_but_xnorActionPerformed(evt);
@@ -344,6 +388,7 @@ public class NewFormula extends javax.swing.JFrame {
         new_op_but_openpar.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
         new_op_but_openpar.setText("(");
         new_op_but_openpar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        new_op_but_openpar.setContentAreaFilled(false);
         new_op_but_openpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 new_op_but_openparActionPerformed(evt);
@@ -354,6 +399,7 @@ public class NewFormula extends javax.swing.JFrame {
         new_op_but_closepar.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
         new_op_but_closepar.setText(")");
         new_op_but_closepar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        new_op_but_closepar.setContentAreaFilled(false);
         new_op_but_closepar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 new_op_but_closeparActionPerformed(evt);
@@ -362,8 +408,10 @@ public class NewFormula extends javax.swing.JFrame {
 
         new_op_but_APAGAR.setBackground(new java.awt.Color(255, 255, 255));
         new_op_but_APAGAR.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
-        new_op_but_APAGAR.setText("APAGAR");
-        new_op_but_APAGAR.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        new_op_but_APAGAR.setForeground(new java.awt.Color(255, 0, 0));
+        new_op_but_APAGAR.setText("DELETE");
+        new_op_but_APAGAR.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 51), 2, true));
+        new_op_but_APAGAR.setContentAreaFilled(false);
         new_op_but_APAGAR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 new_op_but_APAGARActionPerformed(evt);
@@ -598,8 +646,21 @@ public class NewFormula extends javax.swing.JFrame {
 
     private void new_resultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_resultActionPerformed
             // TODO add your handling code here:
-            new Result().setVisible(true);
-            this.setVisible(false);
+            
+            Object[] options = { "Confirm", "Cancel" };
+            UIManager.put("OptionPane.minimumSize", new Dimension(500, 100));
+            UIManager.getDefaults().put("OptionPane.background",new Color(190,255,255));
+            UIManager.put ("Panel.background", new Color(190,255,255));
+            UIManager.put("OptionPane.messageFont", new FontUIResource(new Font(  
+          "Arial", Font.BOLD, 18)));     
+            
+            int o = JOptionPane.showOptionDialog(null, "The formula entered was: " + new_text.getText(), "Confirmation", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+            //System.out.println(o);    
+            if (o == 0){
+                new Result().setVisible(true);
+                this.setVisible(false);
+            }
+            
     }//GEN-LAST:event_new_resultActionPerformed
 
     /**
@@ -638,6 +699,7 @@ public class NewFormula extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel new_label_oper;
     private javax.swing.JLabel new_label_prop;
     private javax.swing.JButton new_menu;

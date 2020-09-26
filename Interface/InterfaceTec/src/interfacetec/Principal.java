@@ -5,6 +5,8 @@
  */
 package interfacetec;
 
+import java.awt.Color;
+
 /**
  *
  * @author babyp
@@ -17,6 +19,9 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         initComponents();
         setLocationRelativeTo(null);
+        
+        Color background = new Color(190,255,255); 
+        this.getContentPane().setBackground(background);
         //setExtendedState(MAXIMIZED_BOTH);
     }
 
@@ -37,7 +42,7 @@ public class Principal extends javax.swing.JFrame {
         menu_load_table = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(204, 255, 255));
         setPreferredSize(new java.awt.Dimension(1366, 768));
         setSize(new java.awt.Dimension(1366, 768));
 
@@ -45,10 +50,11 @@ public class Principal extends javax.swing.JFrame {
         menu_titulo.setFont(new java.awt.Font("Georgia", 2, 100)); // NOI18N
         menu_titulo.setText("Logic Check");
 
-        menu_new_form.setBackground(new java.awt.Color(255, 255, 255));
+        menu_new_form.setBackground(new java.awt.Color(190, 255, 255));
         menu_new_form.setFont(new java.awt.Font("Georgia", 0, 36)); // NOI18N
         menu_new_form.setText("New Formula");
         menu_new_form.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        menu_new_form.setContentAreaFilled(false);
         menu_new_form.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menu_new_formActionPerformed(evt);
@@ -59,6 +65,7 @@ public class Principal extends javax.swing.JFrame {
         menu_load_form.setFont(new java.awt.Font("Georgia", 0, 36)); // NOI18N
         menu_load_form.setText("Load Formula");
         menu_load_form.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        menu_load_form.setContentAreaFilled(false);
         menu_load_form.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menu_load_formActionPerformed(evt);
@@ -77,12 +84,14 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        menu_logo.setBackground(new java.awt.Color(190, 255, 255));
         menu_logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\babyp\\OneDrive\\Área de Trabalho\\Computação\\Técnicas de Programação\\TRABALHO\\LOGO.png")); // NOI18N
 
         menu_load_table.setBackground(new java.awt.Color(255, 255, 255));
         menu_load_table.setFont(new java.awt.Font("Georgia", 0, 36)); // NOI18N
         menu_load_table.setText("Load Table");
         menu_load_table.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        menu_load_table.setContentAreaFilled(false);
         menu_load_table.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menu_load_tableActionPerformed(evt);
@@ -120,7 +129,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(menu_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(menu_logo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 268, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 265, Short.MAX_VALUE)
                 .addComponent(menu_new_form, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(menu_load_form, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)

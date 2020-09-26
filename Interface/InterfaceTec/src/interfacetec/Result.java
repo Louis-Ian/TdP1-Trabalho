@@ -26,6 +26,9 @@ public class Result extends javax.swing.JFrame {
         initComponents();
         ajustComponents();
         setLocationRelativeTo(null);
+        
+        Color background = new Color(190,255,255); 
+        this.getContentPane().setBackground(background);
     }
 
     /**
@@ -62,6 +65,7 @@ public class Result extends javax.swing.JFrame {
         result_save.setFont(new java.awt.Font("Georgia", 0, 36)); // NOI18N
         result_save.setText("Save >");
         result_save.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        result_save.setContentAreaFilled(false);
         result_save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 result_saveActionPerformed(evt);

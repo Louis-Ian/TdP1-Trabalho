@@ -5,6 +5,8 @@
  */
 package interfacetec;
 
+import java.awt.Color;
+
 /**
  *
  * @author babyp
@@ -17,6 +19,8 @@ public class About extends javax.swing.JFrame {
     public About() {
         initComponents();
         setLocationRelativeTo(null);
+        Color background = new Color(190,255,255); 
+        this.getContentPane().setBackground(background);
     }
 
     /**
