@@ -5,6 +5,10 @@ public class Proposition implements IOperation {
         this.value = v;
     }
 
+    public void setValue(Boolean v) {
+        this.value = v;
+    }
+
     public Boolean value() {
         return this.value;
     }
