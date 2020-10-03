@@ -20,13 +20,13 @@ public class EscritaELeituraTxt {
 		try {
 			file = new File(caminho);
 			fileOutput = new FileOutputStream(file);
-			fileOutput.write(("Proposi��o: " + formula + "\n").getBytes());
+			fileOutput.write(("Proposição: " + formula + "\n").getBytes());
 			fileOutput.write("Tabela:\n".getBytes());
 			fileOutput.write(tabela.getBytes());
 			fileOutput.close();
 			return true;
 		} catch (FileNotFoundException e) {
-			System.err.println("Problema n�o encontrado" + caminho);
+			System.err.println("Problema não encontrado" + caminho);
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -44,7 +44,7 @@ public class EscritaELeituraTxt {
 			return bufferReader.readLine().split(":")[1].strip();
 
 		} catch (FileNotFoundException e) {
-			System.err.println("Problema n�o encontrado" + caminho);
+			System.err.println("Problema não encontrado" + caminho);
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
