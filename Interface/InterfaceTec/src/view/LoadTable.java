@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package interfacetec;
+package view;
 
 import java.awt.Color;
 import java.io.File;
@@ -13,12 +13,12 @@ import javax.swing.JFileChooser;
  *
  * @author babyp
  */
-public class LoadFormula extends javax.swing.JFrame {
+public class LoadTable extends javax.swing.JFrame {
 
     /**
      * Creates new form LoadFormula
      */
-    public LoadFormula() {
+    public LoadTable() {
         initComponents();
         setLocationRelativeTo(null);
         Color background = new Color(190,255,255); 
@@ -35,7 +35,7 @@ public class LoadFormula extends javax.swing.JFrame {
     private void initComponents() {
 
         load_menu = new javax.swing.JButton();
-        Load_text_formula = new javax.swing.JTextField();
+        Load_text_table = new javax.swing.JTextField();
         load_search = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,12 +53,12 @@ public class LoadFormula extends javax.swing.JFrame {
             }
         });
 
-        Load_text_formula.setEditable(false);
-        Load_text_formula.setBackground(new java.awt.Color(255, 255, 255));
-        Load_text_formula.setFont(new java.awt.Font("Georgia", 0, 24)); // NOI18N
-        Load_text_formula.setForeground(new java.awt.Color(0, 204, 204));
-        Load_text_formula.setText(" Add TXT File");
-        Load_text_formula.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        Load_text_table.setEditable(false);
+        Load_text_table.setBackground(new java.awt.Color(255, 255, 255));
+        Load_text_table.setFont(new java.awt.Font("Georgia", 0, 24)); // NOI18N
+        Load_text_table.setForeground(new java.awt.Color(0, 204, 204));
+        Load_text_table.setText(" Add TXT File");
+        Load_text_table.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
 
         load_search.setBackground(new java.awt.Color(255, 255, 255));
         load_search.setFont(new java.awt.Font("Georgia", 0, 36)); // NOI18N
@@ -77,8 +77,8 @@ public class LoadFormula extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(134, 134, 134)
-                .addComponent(Load_text_formula, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                .addComponent(Load_text_table, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(load_search, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(151, 151, 151))
             .addGroup(layout.createSequentialGroup()
@@ -94,8 +94,8 @@ public class LoadFormula extends javax.swing.JFrame {
                 .addGap(285, 285, 285)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(load_search, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Load_text_formula, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(368, Short.MAX_VALUE))
+                    .addComponent(Load_text_table, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         pack();
@@ -113,14 +113,14 @@ public class LoadFormula extends javax.swing.JFrame {
          file.setFileSelectionMode(JFileChooser.FILES_ONLY);
          int i= file.showSaveDialog(null);
        if (i==1){
-           Load_text_formula.setText("");
+           Load_text_table.setText("");
        } else {
            File arquivo = file.getSelectedFile();
            
+           
            //arquivo.getPath() o caminho para o arquivo escolhido
-          Load_text_formula.setText(arquivo.getPath());
+          Load_text_table.setText(arquivo.getPath());
        }
-          
     }//GEN-LAST:event_load_searchActionPerformed
 
     /**
@@ -140,26 +140,27 @@ public class LoadFormula extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoadFormula.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoadTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoadFormula.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoadTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoadFormula.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoadTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoadFormula.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoadTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoadFormula().setVisible(true);
+                new LoadTable().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Load_text_formula;
+    private javax.swing.JTextField Load_text_table;
     private javax.swing.JButton load_menu;
     private javax.swing.JButton load_search;
     // End of variables declaration//GEN-END:variables

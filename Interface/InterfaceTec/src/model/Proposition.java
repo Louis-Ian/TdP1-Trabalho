@@ -1,3 +1,5 @@
+package model;
+
 public class Proposition implements IOperation {
     private Boolean value;
 
