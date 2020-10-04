@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.Color;
 import java.io.File;
 import javax.swing.JFileChooser;
 
@@ -9,8 +8,6 @@ public class LoadFormula extends javax.swing.JFrame {
     public LoadFormula() {
         initComponents();
         setLocationRelativeTo(null);
-        Color background = new Color(190, 255, 255);
-        this.getContentPane().setBackground(background);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -21,7 +18,9 @@ public class LoadFormula extends javax.swing.JFrame {
         load_search = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Load Formula");
         setBackground(new java.awt.Color(255, 255, 255));
+        setResizable(false);
         setSize(new java.awt.Dimension(1366, 768));
 
         load_menu.setFont(new java.awt.Font("Georgia", 0, 24)); // NOI18N
@@ -38,9 +37,13 @@ public class LoadFormula extends javax.swing.JFrame {
         Load_text_formula.setEditable(false);
         Load_text_formula.setBackground(new java.awt.Color(255, 255, 255));
         Load_text_formula.setFont(new java.awt.Font("Georgia", 0, 24)); // NOI18N
-        Load_text_formula.setForeground(new java.awt.Color(0, 204, 204));
         Load_text_formula.setText(" Add TXT File");
         Load_text_formula.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        Load_text_formula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Load_text_formulaActionPerformed(evt);
+            }
+        });
 
         load_search.setBackground(new java.awt.Color(255, 255, 255));
         load_search.setFont(new java.awt.Font("Georgia", 0, 36)); // NOI18N
@@ -58,26 +61,26 @@ public class LoadFormula extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(134, 134, 134)
-                .addComponent(Load_text_formula, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
-                .addComponent(load_search, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(151, 151, 151))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(load_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Load_text_formula, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(load_search, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(load_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(493, 493, 493))))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addContainerGap()
                 .addComponent(load_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(285, 285, 285)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(load_search, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Load_text_formula, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(368, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Load_text_formula, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(load_search, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -101,6 +104,10 @@ public class LoadFormula extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_load_searchActionPerformed
+
+    private void Load_text_formulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Load_text_formulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Load_text_formulaActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {

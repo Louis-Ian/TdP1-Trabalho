@@ -12,8 +12,6 @@ public class NewFormula extends javax.swing.JFrame {
     public NewFormula() {
         initComponents();
         setLocationRelativeTo(null);
-        Color background = new Color(190, 255, 255);
-        this.getContentPane().setBackground(background);
     }
 
     @SuppressWarnings("unchecked")
@@ -31,22 +29,12 @@ public class NewFormula extends javax.swing.JFrame {
         new_prop_but_C = new javax.swing.JButton();
         new_prop_but_D = new javax.swing.JButton();
         new_prop_but_E = new javax.swing.JButton();
-        new_prop_but_F = new javax.swing.JButton();
-        new_prop_but_V = new javax.swing.JButton();
-        new_prop_but_H = new javax.swing.JButton();
-        new_prop_but_I = new javax.swing.JButton();
-        new_prop_but_J = new javax.swing.JButton();
-        new_prop_but_K = new javax.swing.JButton();
-        new_prop_but_G = new javax.swing.JButton();
-        new_operators = new javax.swing.JPanel();
+        new_op_but_openpar = new javax.swing.JButton();
+        new_op_but_closepar = new javax.swing.JButton();
         new_label_oper = new javax.swing.JLabel();
         new_op_but_not = new javax.swing.JButton();
         new_op_but_or = new javax.swing.JButton();
         new_op_but_and = new javax.swing.JButton();
-        new_op_but_imply = new javax.swing.JButton();
-        new_prop_but_xnor = new javax.swing.JButton();
-        new_op_but_openpar = new javax.swing.JButton();
-        new_op_but_closepar = new javax.swing.JButton();
         new_op_but_APAGAR = new javax.swing.JButton();
 
         jDialog1.setTitle("Confirmação");
@@ -64,7 +52,9 @@ public class NewFormula extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Clauses");
         setBackground(new java.awt.Color(255, 255, 255));
+        setResizable(false);
         setSize(new java.awt.Dimension(1366, 768));
 
         new_menu.setFont(new java.awt.Font("Georgia", 0, 24)); // NOI18N
@@ -158,152 +148,27 @@ public class NewFormula extends javax.swing.JFrame {
             }
         });
 
-        new_prop_but_F.setBackground(new java.awt.Color(255, 255, 255));
-        new_prop_but_F.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
-        new_prop_but_F.setForeground(new java.awt.Color(255, 51, 51));
-        new_prop_but_F.setText("F");
-        new_prop_but_F.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 51, 51), 2, true));
-        new_prop_but_F.setContentAreaFilled(false);
-        new_prop_but_F.addActionListener(new java.awt.event.ActionListener() {
+        new_op_but_openpar.setBackground(new java.awt.Color(255, 255, 255));
+        new_op_but_openpar.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
+        new_op_but_openpar.setText("(");
+        new_op_but_openpar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        new_op_but_openpar.setContentAreaFilled(false);
+        new_op_but_openpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                new_prop_but_FActionPerformed(evt);
+                new_op_but_openparActionPerformed(evt);
             }
         });
 
-        new_prop_but_V.setBackground(new java.awt.Color(255, 255, 255));
-        new_prop_but_V.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
-        new_prop_but_V.setForeground(new java.awt.Color(0, 153, 0));
-        new_prop_but_V.setText("V");
-        new_prop_but_V.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 153, 0), 2, true));
-        new_prop_but_V.setContentAreaFilled(false);
-        new_prop_but_V.addActionListener(new java.awt.event.ActionListener() {
+        new_op_but_closepar.setBackground(new java.awt.Color(255, 255, 255));
+        new_op_but_closepar.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
+        new_op_but_closepar.setText(")");
+        new_op_but_closepar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        new_op_but_closepar.setContentAreaFilled(false);
+        new_op_but_closepar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                new_prop_but_VActionPerformed(evt);
+                new_op_but_closeparActionPerformed(evt);
             }
         });
-
-        new_prop_but_H.setBackground(new java.awt.Color(255, 255, 255));
-        new_prop_but_H.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
-        new_prop_but_H.setText("H");
-        new_prop_but_H.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        new_prop_but_H.setContentAreaFilled(false);
-        new_prop_but_H.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                new_prop_but_HActionPerformed(evt);
-            }
-        });
-
-        new_prop_but_I.setBackground(new java.awt.Color(255, 255, 255));
-        new_prop_but_I.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
-        new_prop_but_I.setText("I");
-        new_prop_but_I.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        new_prop_but_I.setContentAreaFilled(false);
-        new_prop_but_I.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                new_prop_but_IActionPerformed(evt);
-            }
-        });
-
-        new_prop_but_J.setBackground(new java.awt.Color(255, 255, 255));
-        new_prop_but_J.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
-        new_prop_but_J.setText("J");
-        new_prop_but_J.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        new_prop_but_J.setContentAreaFilled(false);
-        new_prop_but_J.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                new_prop_but_JActionPerformed(evt);
-            }
-        });
-
-        new_prop_but_K.setBackground(new java.awt.Color(255, 255, 255));
-        new_prop_but_K.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
-        new_prop_but_K.setText("K");
-        new_prop_but_K.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        new_prop_but_K.setContentAreaFilled(false);
-        new_prop_but_K.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                new_prop_but_KActionPerformed(evt);
-            }
-        });
-
-        new_prop_but_G.setBackground(new java.awt.Color(255, 255, 255));
-        new_prop_but_G.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
-        new_prop_but_G.setText("G");
-        new_prop_but_G.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        new_prop_but_G.setContentAreaFilled(false);
-        new_prop_but_G.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                new_prop_but_GActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout new_propositionsLayout = new javax.swing.GroupLayout(new_propositions);
-        new_propositions.setLayout(new_propositionsLayout);
-        new_propositionsLayout.setHorizontalGroup(
-            new_propositionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(new_propositionsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(new_propositionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(new_label_prop)
-                    .addGroup(new_propositionsLayout.createSequentialGroup()
-                        .addGroup(new_propositionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(new_propositionsLayout.createSequentialGroup()
-                                .addComponent(new_prop_but_A, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(new_prop_but_B, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(new_prop_but_C, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(new_prop_but_D, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(new_prop_but_E, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(new_propositionsLayout.createSequentialGroup()
-                                .addComponent(new_prop_but_G, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(new_prop_but_H, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(new_prop_but_I, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(new_prop_but_J, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(new_prop_but_K, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(new_prop_but_F, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(new_prop_but_V, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        new_propositionsLayout.setVerticalGroup(
-            new_propositionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(new_propositionsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(new_label_prop)
-                .addGroup(new_propositionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(new_propositionsLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(new_propositionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(new_prop_but_A, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(new_prop_but_B, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(new_prop_but_C, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(new_prop_but_D, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(new_prop_but_E, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(new_propositionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(new_prop_but_H, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(new_prop_but_I, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(new_prop_but_J, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(new_prop_but_K, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(new_prop_but_G, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(new_propositionsLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(new_propositionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(new_prop_but_F, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(new_prop_but_V, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        new_operators.setBackground(new java.awt.Color(255, 255, 255));
-        new_operators.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
 
         new_label_oper.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         new_label_oper.setText("Operators");
@@ -342,50 +207,6 @@ public class NewFormula extends javax.swing.JFrame {
             }
         });
 
-        new_op_but_imply.setBackground(new java.awt.Color(255, 255, 255));
-        new_op_but_imply.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
-        new_op_but_imply.setText("-->");
-        new_op_but_imply.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        new_op_but_imply.setContentAreaFilled(false);
-        new_op_but_imply.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                new_op_but_implyActionPerformed(evt);
-            }
-        });
-
-        new_prop_but_xnor.setBackground(new java.awt.Color(255, 255, 255));
-        new_prop_but_xnor.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
-        new_prop_but_xnor.setText("<-->");
-        new_prop_but_xnor.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        new_prop_but_xnor.setContentAreaFilled(false);
-        new_prop_but_xnor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                new_prop_but_xnorActionPerformed(evt);
-            }
-        });
-
-        new_op_but_openpar.setBackground(new java.awt.Color(255, 255, 255));
-        new_op_but_openpar.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
-        new_op_but_openpar.setText("(");
-        new_op_but_openpar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        new_op_but_openpar.setContentAreaFilled(false);
-        new_op_but_openpar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                new_op_but_openparActionPerformed(evt);
-            }
-        });
-
-        new_op_but_closepar.setBackground(new java.awt.Color(255, 255, 255));
-        new_op_but_closepar.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
-        new_op_but_closepar.setText(")");
-        new_op_but_closepar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        new_op_but_closepar.setContentAreaFilled(false);
-        new_op_but_closepar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                new_op_but_closeparActionPerformed(evt);
-            }
-        });
-
         new_op_but_APAGAR.setBackground(new java.awt.Color(255, 255, 255));
         new_op_but_APAGAR.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
         new_op_but_APAGAR.setForeground(new java.awt.Color(255, 0, 0));
@@ -398,61 +219,67 @@ public class NewFormula extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout new_operatorsLayout = new javax.swing.GroupLayout(new_operators);
-        new_operators.setLayout(new_operatorsLayout);
-        new_operatorsLayout.setHorizontalGroup(
-            new_operatorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(new_operatorsLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(new_operatorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(new_operatorsLayout.createSequentialGroup()
-                        .addGroup(new_operatorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(new_operatorsLayout.createSequentialGroup()
-                                .addComponent(new_op_but_not, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(new_op_but_or, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(new_op_but_and, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(new_operatorsLayout.createSequentialGroup()
-                                .addComponent(new_prop_but_xnor, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(new_op_but_openpar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(new_op_but_closepar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(new_operatorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(new_operatorsLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(new_op_but_imply, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, new_operatorsLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                                .addComponent(new_op_but_APAGAR, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())))
-                    .addGroup(new_operatorsLayout.createSequentialGroup()
-                        .addComponent(new_label_oper)
-                        .addContainerGap())))
-        );
-        new_operatorsLayout.setVerticalGroup(
-            new_operatorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(new_operatorsLayout.createSequentialGroup()
+        javax.swing.GroupLayout new_propositionsLayout = new javax.swing.GroupLayout(new_propositions);
+        new_propositions.setLayout(new_propositionsLayout);
+        new_propositionsLayout.setHorizontalGroup(
+            new_propositionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(new_propositionsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(new_label_oper)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addGroup(new_operatorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(new_op_but_and, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(new_op_but_or, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(new_op_but_imply, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(new_op_but_not, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addGroup(new_operatorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(new_prop_but_xnor, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(new_propositionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(new_propositionsLayout.createSequentialGroup()
+                        .addGroup(new_propositionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(new_propositionsLayout.createSequentialGroup()
+                                .addComponent(new_prop_but_A, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(new_prop_but_B, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(new_prop_but_C, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(new_prop_but_D, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(new_prop_but_E, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(new_op_but_openpar, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(new_op_but_closepar, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(new_label_oper))
+                        .addGap(0, 18, Short.MAX_VALUE))
+                    .addGroup(new_propositionsLayout.createSequentialGroup()
+                        .addComponent(new_label_prop)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(new_propositionsLayout.createSequentialGroup()
+                        .addComponent(new_op_but_not, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(new_op_but_or, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14)
+                        .addComponent(new_op_but_and, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(new_op_but_APAGAR, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20))))
+        );
+        new_propositionsLayout.setVerticalGroup(
+            new_propositionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(new_propositionsLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(new_label_prop)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(new_propositionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(new_prop_but_A, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(new_prop_but_B, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(new_prop_but_C, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(new_prop_but_D, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(new_prop_but_E, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(new_op_but_openpar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(new_op_but_closepar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, new_operatorsLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(new_op_but_APAGAR, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(13, 13, 13)
+                .addComponent(new_label_oper)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(new_propositionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(new_op_but_not, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(new_op_but_and, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(new_op_but_or, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(new_op_but_APAGAR, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -460,36 +287,27 @@ public class NewFormula extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(new_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(142, 142, 142)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(new_propositions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(110, 110, 110)
-                                .addComponent(new_operators, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(new_text))
-                        .addGap(18, 18, 18)
-                        .addComponent(new_result, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(46, 46, 46)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(new_result, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(new_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(new_propositions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(new_text)))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(new_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(new_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(new_result, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(72, 72, 72)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(new_operators, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(new_propositions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(103, 103, 103))
+                .addGap(15, 15, 15)
+                .addComponent(new_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(new_propositions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(new_result, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
 
         pack();
@@ -525,17 +343,6 @@ public class NewFormula extends javax.swing.JFrame {
         new_text.setText(texto + " AND ");
     }//GEN-LAST:event_new_op_but_andActionPerformed
 
-    private void new_op_but_implyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_op_but_implyActionPerformed
-        String texto = new_text.getText();
-        new_text.setText(texto + " --> ");
-    }//GEN-LAST:event_new_op_but_implyActionPerformed
-
-    private void new_prop_but_xnorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_prop_but_xnorActionPerformed
-        // TODO add your handling code here:
-        String texto = new_text.getText();
-        new_text.setText(texto + " <--> ");
-    }//GEN-LAST:event_new_prop_but_xnorActionPerformed
-
     private void new_prop_but_AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_prop_but_AActionPerformed
         String texto = new_text.getText();
         new_text.setText(texto + "A");
@@ -560,41 +367,6 @@ public class NewFormula extends javax.swing.JFrame {
         String texto = new_text.getText();
         new_text.setText(texto + "E");
     }//GEN-LAST:event_new_prop_but_EActionPerformed
-
-    private void new_prop_but_FActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_prop_but_FActionPerformed
-        String texto = new_text.getText();
-        new_text.setText(texto + "F");
-    }//GEN-LAST:event_new_prop_but_FActionPerformed
-
-    private void new_prop_but_VActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_prop_but_VActionPerformed
-        String texto = new_text.getText();
-        new_text.setText(texto + "V");
-    }//GEN-LAST:event_new_prop_but_VActionPerformed
-
-    private void new_prop_but_HActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_prop_but_HActionPerformed
-        String texto = new_text.getText();
-        new_text.setText(texto + "H");
-    }//GEN-LAST:event_new_prop_but_HActionPerformed
-
-    private void new_prop_but_IActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_prop_but_IActionPerformed
-        String texto = new_text.getText();
-        new_text.setText(texto + "I");
-    }//GEN-LAST:event_new_prop_but_IActionPerformed
-
-    private void new_prop_but_JActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_prop_but_JActionPerformed
-        String texto = new_text.getText();
-        new_text.setText(texto + "J");
-    }//GEN-LAST:event_new_prop_but_JActionPerformed
-
-    private void new_prop_but_KActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_prop_but_KActionPerformed
-        String texto = new_text.getText();
-        new_text.setText(texto + "K");
-    }//GEN-LAST:event_new_prop_but_KActionPerformed
-
-    private void new_prop_but_GActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_prop_but_GActionPerformed
-        String texto = new_text.getText();
-        new_text.setText(texto + "G");
-    }//GEN-LAST:event_new_prop_but_GActionPerformed
 
     private void new_op_but_APAGARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_op_but_APAGARActionPerformed
         String texto = new_text.getText();
@@ -637,24 +409,14 @@ public class NewFormula extends javax.swing.JFrame {
     private javax.swing.JButton new_op_but_APAGAR;
     private javax.swing.JButton new_op_but_and;
     private javax.swing.JButton new_op_but_closepar;
-    private javax.swing.JButton new_op_but_imply;
     private javax.swing.JButton new_op_but_not;
     private javax.swing.JButton new_op_but_openpar;
     private javax.swing.JButton new_op_but_or;
-    private javax.swing.JPanel new_operators;
     private javax.swing.JButton new_prop_but_A;
     private javax.swing.JButton new_prop_but_B;
     private javax.swing.JButton new_prop_but_C;
     private javax.swing.JButton new_prop_but_D;
     private javax.swing.JButton new_prop_but_E;
-    private javax.swing.JButton new_prop_but_F;
-    private javax.swing.JButton new_prop_but_G;
-    private javax.swing.JButton new_prop_but_H;
-    private javax.swing.JButton new_prop_but_I;
-    private javax.swing.JButton new_prop_but_J;
-    private javax.swing.JButton new_prop_but_K;
-    private javax.swing.JButton new_prop_but_V;
-    private javax.swing.JButton new_prop_but_xnor;
     private javax.swing.JPanel new_propositions;
     private javax.swing.JButton new_result;
     private javax.swing.JTextField new_text;
