@@ -2,3 +2,4 @@
 *.class
 *.code-workspace
 Interface/InterfaceTec/nbproject/private/private.properties
+/Interface/InterfaceTec/dist/
