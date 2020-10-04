@@ -54,7 +54,7 @@ public class FormulaTreatment {
         return values;
     }
 
-    public static void mostrarTable(String[][] matriz) {
+    public void mostrarTable(String[][] matriz) {
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[i].length; j++) {
                 System.out.print(matriz[i][j] + " ");
