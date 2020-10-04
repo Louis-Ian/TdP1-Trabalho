@@ -1,3 +1,5 @@
+package model;
+
 public class And implements IOperation{
 	private IOperation p1, p2;
 

@@ -1,4 +1,4 @@
-package tecnicas;
+package model;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
 
 public class EscritaELeituraTxt {
 
-	private final static String CAMINHO = "C:\\Users\\Breno\\eclipse-workspace\\tecnicas\\arquivos\\"; //TODO: set relative path
+	private final static String CAMINHO = "C:\\Users\\Breno\\eclipse-workspace\\tecnicas\\arquivos\\";
 	private File file;
 	private FileOutputStream fileOutput;
 	private FileInputStream fileInput;
@@ -41,7 +41,7 @@ public class EscritaELeituraTxt {
 			InputStreamReader reader = new InputStreamReader(fileInput);
 			BufferedReader bufferReader = new BufferedReader(reader);
 			
-			return bufferReader.readLine().split(":")[1].strip();
+			return bufferReader.readLine().split(":")[1];
 
 		} catch (FileNotFoundException e) {
 			System.err.println("Problema não encontrado" + caminho);
