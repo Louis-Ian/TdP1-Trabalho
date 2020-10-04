@@ -63,10 +63,11 @@ public class FormulaTreatment {
             line = (int) Math.floor(Math.pow(2, length - 1 - i));
             count = 0;
             for (int j = 0; j < totalLines; j++) {
-                if (count < line && start == true) {
+                if (count < line && start) {
                     values[j][i] = true;
                     count++;
-                } else {                  
+                } else {  
+                    start = false;
                     count--;
                 }
                 if (count == 0) {
