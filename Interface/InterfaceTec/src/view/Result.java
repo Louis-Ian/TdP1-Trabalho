@@ -188,13 +188,13 @@ public class Result extends javax.swing.JFrame {
             //System.out.println(diretorio.getPath());
             //System.out.println(file.getName(arquivo));
             
-            rW.toSave(diretorio.getPath(),file.getName(arquivo),this.formula,"teste");
+            rW.toSave(diretorio.getPath(),file.getName(arquivo),this.formula,this.tableHeader,this.tableRows);
 
             // diretorio.getPath()  RETORNA O DIRETORIO QUE O USUARIO ESCOLHEU PARA SALVAR
-            JOptionPane.showMessageDialog(null, diretorio.getPath());
+            //JOptionPane.showMessageDialog(null, diretorio.getPath());
 
             //file.getName(arquivo)  RETORNA O NOME QUE O USUARIO DIGITOU PARA O ARQUIVO
-            JOptionPane.showMessageDialog(null, file.getName(arquivo));
+            //JOptionPane.showMessageDialog(null, file.getName(arquivo));
 
         }
     }//GEN-LAST:event_result_saveActionPerformed
