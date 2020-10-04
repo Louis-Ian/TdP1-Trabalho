@@ -1,5 +1,6 @@
 package view;
 
+import controllers.FormulaTreatment;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -72,6 +73,11 @@ public class NewFormula extends javax.swing.JFrame {
         new_text.setBackground(new java.awt.Color(255, 255, 255));
         new_text.setFont(new java.awt.Font("Georgia", 0, 36)); // NOI18N
         new_text.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        new_text.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                new_textActionPerformed(evt);
+            }
+        });
 
         new_result.setBackground(new java.awt.Color(255, 255, 255));
         new_result.setFont(new java.awt.Font("Georgia", 0, 36)); // NOI18N
@@ -389,9 +395,13 @@ public class NewFormula extends javax.swing.JFrame {
         if (o == 0) {
             new Result().setVisible(true);
             this.setVisible(false);
-        }
-
+        }                
+        FormulaTreatment.tratarFormula(new_text.getText());                
     }//GEN-LAST:event_new_resultActionPerformed
+
+    private void new_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_textActionPerformed
+
+    }//GEN-LAST:event_new_textActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -400,7 +410,6 @@ public class NewFormula extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel new_label_oper;
