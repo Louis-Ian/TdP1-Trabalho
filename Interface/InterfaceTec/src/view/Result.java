@@ -22,8 +22,6 @@ public class Result extends javax.swing.JFrame {
 
         load_menu = new javax.swing.JButton();
         result_save = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Results");
@@ -53,9 +51,41 @@ public class Result extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        jTable1.setFont(new java.awt.Font("Georgia", 0, 36)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(13, Short.MAX_VALUE)
+                .addComponent(load_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(509, 509, 509)
+                .addComponent(result_save, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(result_save, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(load_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(415, Short.MAX_VALUE))
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void ajustComponents() {
+        
+        //iniciando a tela para tabela dinâmica
+        ScrollPane1 = new javax.swing.JScrollPane();
+        Table = new javax.swing.JTable();
+        
+        Table.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        Table.setFont(new java.awt.Font("Georgia", 0, 36)); // NOI18N
+        
+        //valores da tabela
+        Table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"V", "V", "V", "?", "?", "?", "?"},
                 {"V", "V", "F", "?", "?", "?", "?"},
@@ -67,7 +97,7 @@ public class Result extends javax.swing.JFrame {
                 {"F", "F", "F", "?", "?", "?", "?"}
             },
             new String [] {
-                "A", "B", "C", "P1", "P2", "P3", "P4"
+                "TESTE", "B", "C", "P1", "P2", "P3", "P4"
             }
         ) {
             Class[] types = new Class [] {
@@ -85,10 +115,12 @@ public class Result extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setEnabled(false);
-        jTable1.setGridColor(new java.awt.Color(0, 0, 0));
-        jScrollPane1.setViewportView(jTable1);
-
+        
+        Table.setEnabled(false);
+        Table.setGridColor(new java.awt.Color(0, 0, 0));
+        ScrollPane1.setViewportView(Table);
+        
+        
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -100,7 +132,7 @@ public class Result extends javax.swing.JFrame {
                         .addComponent(load_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(509, 509, 509)
                         .addComponent(result_save, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 769, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 769, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13))
         );
         layout.setVerticalGroup(
@@ -111,26 +143,30 @@ public class Result extends javax.swing.JFrame {
                     .addComponent(result_save, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(load_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(25, Short.MAX_VALUE))
         );
-
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
-
-    private void ajustComponents() {
-        jTable1.setRowHeight(40);
+        
+        
+        
+        
+        
+        
+        Table.setRowHeight(40);
 
         DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         headerRenderer.setBackground(Color.WHITE);
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
 
-        for (int i = 0; i < jTable1.getModel().getColumnCount(); i++) {
-            jTable1.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
-            jTable1.getColumnModel().getColumn(i).setHeaderRenderer(centerRenderer);
-            jTable1.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        for (int i = 0; i < Table.getModel().getColumnCount(); i++) {
+            Table.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
+            Table.getColumnModel().getColumn(i).setHeaderRenderer(centerRenderer);
+            Table.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
+        
+        
+        
     }
 
     private void load_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_load_menuActionPerformed
@@ -165,10 +201,11 @@ public class Result extends javax.swing.JFrame {
             }
         });
     }
+    
+    private javax.swing.JTable Table;
+    private javax.swing.JScrollPane ScrollPane1;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton load_menu;
     private javax.swing.JButton result_save;
     // End of variables declaration//GEN-END:variables
