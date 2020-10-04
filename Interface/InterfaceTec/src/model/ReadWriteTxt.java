@@ -8,25 +8,25 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class EscritaELeituraTxt {
+public class ReadWriteTxt {
 
-	private final static String CAMINHO = "C:\\Users\\Breno\\eclipse-workspace\\tecnicas\\arquivos\\";
+	private final static String PATH = "C:\\Users\\Breno\\eclipse-workspace\\tecnicas\\arquivos\\";
 	private File file;
 	private FileOutputStream fileOutput;
 	private FileInputStream fileInput;
 
-	public boolean salvar(String nomeArquivo, String formula, String tabela) {
-		String caminho = CAMINHO + nomeArquivo + ".txt";
+	public boolean toSave(String name, String formula, String table) {
+		String path = PATH + name + ".txt";
 		try {
-			file = new File(caminho);
+			file = new File(path);
 			fileOutput = new FileOutputStream(file);
 			fileOutput.write(("Proposição: " + formula + "\n").getBytes());
 			fileOutput.write("Tabela:\n".getBytes());
-			fileOutput.write(tabela.getBytes());
+			fileOutput.write(table.getBytes());
 			fileOutput.close();
 			return true;
 		} catch (FileNotFoundException e) {
-			System.err.println("Problema não encontrado" + caminho);
+			System.err.println("Problema não encontrado" + path);
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -34,17 +34,17 @@ public class EscritaELeituraTxt {
 		return false;
 	}
 
-	public String recuperar(String nomeArquivo) {
-		String caminho = CAMINHO + nomeArquivo + ".txt";
+	public String toRecover(String name) {
+		String path = PATH + name + ".txt";
 		try {
-			fileInput= new FileInputStream(caminho);
+			fileInput= new FileInputStream(path);
 			InputStreamReader reader = new InputStreamReader(fileInput);
 			BufferedReader bufferReader = new BufferedReader(reader);
 			
 			return bufferReader.readLine().split(":")[1];
 
 		} catch (FileNotFoundException e) {
-			System.err.println("Problema não encontrado" + caminho);
+			System.err.println("Problema não encontrado" + path);
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();

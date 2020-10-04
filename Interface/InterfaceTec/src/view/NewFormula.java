@@ -394,11 +394,10 @@ public class NewFormula extends javax.swing.JFrame {
 
         int o = JOptionPane.showOptionDialog(null, "The formula entered was: " + new_text.getText(), "Confirmation", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         if (o == 0) {
-           
-            String[] Clauses = FormulaTreatment.getClauses(new_text.getText());
-            
-            //Result(tableHeader,tableRows)
-            Result resultScreen = new Result(Clauses, FormulaTreatment.generateFormulaValues(Clauses.length));
+                                   
+            FormulaTreatment formula = new FormulaTreatment(new_text.getText());                                  
+          
+            Result resultScreen = new Result(formula.getTableHead(), formula.getTableBody());
             resultScreen.setVisible(true);
             this.setVisible(false);
         }

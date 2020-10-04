@@ -4,62 +4,76 @@ import java.util.ArrayList;
 
 public class FormulaTreatment {
 
-    public static void tratarFormula(String formula) {
+    private boolean[][] values;
+    private String formula;
+    private int length;
+    private int totalLines;
+    private ArrayList<String> list;
 
-        String[] values = formula.split(" ");
-
-        System.out.println(getClauses(formula));
+    public FormulaTreatment(String formula) {
+        this.formula = formula;
+        
+        getClauses();
+        this.length = getTotalClauses();
+        this.totalLines = (int) Math.pow(2, length);
+        generateFormulaValues();
     }
 
-    public static String[] getClauses(String formula) {
-        String[] clauses = formula.replace("(", "").replace(")", "").replace("~", "").split(" ");
-        ArrayList<String> list = new ArrayList<>();
-        for (int i = 0; i < clauses.length; i += 2) {
-            if (!list.contains(clauses[i])) {
-                list.add(clauses[i]);
-            }
-        }
-        generateFormulaValues(list.size());
+    public String[] getTableHead() {
         String[] listaretorno = new String[list.size()];
-        for(int j = 0; j<list.size();j++){
+        for (int j = 0; j < list.size(); j++) {
             listaretorno[j] = list.get(j);
         }
         return listaretorno;
     }
 
-    public static String[][] generateFormulaValues(int length) {
-        int linha = (int) Math.pow(2, length);
-        int count, line;
-        String start = "T";
+    public String[][] getTableBody() {
+        String stringValues[][] = new String[totalLines][length];
+        for (int i = 0; i < stringValues.length; i++) {
+            for (int j = 0; j < stringValues[i].length; j++) {
+                if (values[i][j]) {
+                    stringValues[i][j] = "T";
+                } else {
+                    stringValues[i][j] = "F";
+                }
+            }
+        }
+        return stringValues;
+    }
 
-        String[][] values = new String[linha][length];
+    private int getTotalClauses() {
+        return list.size();
+    }
+
+    private void getClauses() {
+        String[] clauses = formula.replace("(", "").replace(")", "").replace("¬", "").split(" ");
+        list = new ArrayList<>();
+        for (int i = 0; i < clauses.length; i += 2) {
+            if (!list.contains(clauses[i])) {
+                list.add(clauses[i]);
+            }
+        }
+    }
+
+    private boolean[][] generateFormulaValues() {
+        int count, line;
+        boolean start = true;
+        values = new boolean[totalLines][length];
         for (int i = 0; i < length; i++) {
             line = (int) Math.floor(Math.pow(2, length - 1 - i));
             count = 0;
-            for (int j = 0; j < linha; j++) {
-                if (count < line && start == "T") {
-                    values[j][i] = "T";
+            for (int j = 0; j < totalLines; j++) {
+                if (count < line && start == true) {
+                    values[j][i] = true;
                     count++;
-                } else {
-                    values[j][i] = "F";
-                    start = "F";
+                } else {                  
                     count--;
                 }
                 if (count == 0) {
-                    start = "T";
+                    start = true;
                 }
             }
         }
-        //mostrarTable(values);
         return values;
-    }
-
-    public static void mostrarTable(String[][] matriz) {
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[i].length; j++) {
-                System.out.print(matriz[i][j] + " ");
-            }
-            System.out.println();
-        }
     }
 }
