@@ -1,7 +1,12 @@
 package view;
 
+import java.awt.Dimension;
+import java.awt.Font;
 import java.io.File;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.plaf.FontUIResource;
 import model.ReadWriteTxt;
 
 public class LoadFormula extends javax.swing.JFrame {
@@ -134,8 +139,16 @@ public class LoadFormula extends javax.swing.JFrame {
             if (!Load_text_formula.getText().equals("Add TXT File")&&!Load_text_formula.getText().equals("No file selected")) {
                 String formula = rW.toRecover(Load_text_formula.getText());
                 System.out.println(formula);
-                new NewFormula(formula).setVisible(true);
-                this.setVisible(false);
+                Object[] options = {"Confirm", "Cancel"};
+                UIManager.put("OptionPane.minimumSize", new Dimension(500, 100));
+                UIManager.put("OptionPane.messageFont", new FontUIResource(new Font(
+                "Arial", Font.BOLD, 18)));
+                
+                int o = JOptionPane.showOptionDialog(null, "The formula entered was: " + formula, "Confirmation", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+                 if (o == 0) {
+                    new NewFormula(formula).setVisible(true);
+                    this.setVisible(false);
+                 }
             }
             else {
                 Load_text_formula.setText("No file selected");
