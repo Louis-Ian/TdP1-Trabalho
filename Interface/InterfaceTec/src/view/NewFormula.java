@@ -1,7 +1,6 @@
 package view;
 
 import controllers.FormulaTreatment;
-import controllers.TableTreatment;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -394,15 +393,12 @@ public class NewFormula extends javax.swing.JFrame {
                 "Arial", Font.BOLD, 18)));
 
         int o = JOptionPane.showOptionDialog(null, "The formula entered was: " + new_text.getText(), "Confirmation", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
-        if (o == 0) {      
-            //getClauses
-            String[] Clauses = FormulaTreatment.getClauses(new_text.getText());
-            //Clauses + Formulas Header
-            String [] tableHeader = TableTreatment.tableHeaderConstructor(Clauses,Clauses);
-            //Clauses + Formulas Rows
-            String [][] tableRow = TableTreatment.tableRowConstructor(FormulaTreatment.generateFormulaValues(Clauses.length),TableTreatment.tableGenerator(FormulaTreatment.generateFormulaValues(Clauses.length).length,Clauses.length));
-            //Result(tableHeader,tableRows)
-            Result resultScreen = new Result(tableHeader, tableRow);
+        if (o == 0) {
+                                   
+            FormulaTreatment formula = new FormulaTreatment(new_text.getText());                                  
+          
+            Result resultScreen = new Result(formula.getTableHead(), formula.getTableBody());
+
             resultScreen.setVisible(true);
             this.setVisible(false);
         }
