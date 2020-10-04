@@ -11,6 +11,7 @@ public class Proposition implements IOperation {
         this.value = v;
     }
 
+    @Override
     public Boolean value() {
         return this.value;
     }
