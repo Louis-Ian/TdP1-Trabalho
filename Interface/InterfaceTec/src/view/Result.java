@@ -1,5 +1,6 @@
 package view;
 
+import controllers.TableTreatment;
 import java.awt.Color;
 import java.io.File;
 import javax.swing.JFileChooser;
@@ -7,13 +8,18 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
+import model.ReadWriteTxt;
 
 public class Result extends javax.swing.JFrame {
 
     public Result(String[] tableHeader,
-    String [][] tableRows) {
+    String [][] tableRows, String formula) {
+        this.formula = formula;
         this.tableHeader = tableHeader;
         this.tableRows = tableRows;
+        
+        this.tableToWrite = TableTreatment.tableConstructor(tableHeader, tableRows);
+        
         initComponents();
         ajustComponents();
         setLocationRelativeTo(null);
@@ -176,6 +182,13 @@ public class Result extends javax.swing.JFrame {
         } else {
             File arquivo = file.getSelectedFile();
             File diretorio = file.getCurrentDirectory();
+            
+            ReadWriteTxt rW = new ReadWriteTxt();
+            
+            //System.out.println(diretorio.getPath());
+            //System.out.println(file.getName(arquivo));
+            
+            rW.toSave(diretorio.getPath(),file.getName(arquivo),this.formula,"teste");
 
             // diretorio.getPath()  RETORNA O DIRETORIO QUE O USUARIO ESCOLHEU PARA SALVAR
             JOptionPane.showMessageDialog(null, diretorio.getPath());
@@ -201,8 +214,10 @@ public class Result extends javax.swing.JFrame {
     
     }
     
+    private String formula;
     private String[] tableHeader;
     private String [][] tableRows;
+    private String [][] tableToWrite;
     
     private javax.swing.JTable Table;
     private javax.swing.JScrollPane ScrollPane1;

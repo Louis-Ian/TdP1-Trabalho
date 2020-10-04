@@ -26,7 +26,7 @@ public class TableTreatment {
             }
                 
         }
-        mostrarTable(values);
+        //mostrarTable(values);
         return values;
     }
     
@@ -42,6 +42,26 @@ public class TableTreatment {
                 values[j] = B[j-A.length];
             }       
         }
+        return values;
+    }
+    
+    //UNION OF HEADER + ROWS
+    public static String[][] tableConstructor(String[] Header, String[][] Rows) {
+        //A.length == B.length
+        
+        String[][] values = new String[Rows.length+1][Header.length];
+        for (int i = 0; i < values.length; i++) {
+            for (int j = 0; j < values[i].length; j++) {
+                if(i==0){
+                    values[i][j] = Header[j];
+                }
+                else {
+                    values[i][j] = Rows[i-1][j];
+                }
+            }
+                
+        }
+        mostrarTable(values);
         return values;
     }
     

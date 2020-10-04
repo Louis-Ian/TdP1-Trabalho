@@ -1,6 +1,7 @@
 package view;
 
 import controllers.FormulaTreatment;
+import controllers.TableTreatment;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -397,7 +398,7 @@ public class NewFormula extends javax.swing.JFrame {
                                    
             FormulaTreatment formula = new FormulaTreatment(new_text.getText());                                  
           
-            Result resultScreen = new Result(formula.getTableHead(), formula.getTableBody());
+            Result resultScreen = new Result(formula.getTableHead(), formula.getTableBody(),new_text.getText());
 
             resultScreen.setVisible(true);
             this.setVisible(false);

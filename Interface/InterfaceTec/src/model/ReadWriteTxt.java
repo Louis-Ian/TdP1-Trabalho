@@ -15,18 +15,20 @@ public class ReadWriteTxt {
 	private FileOutputStream fileOutput;
 	private FileInputStream fileInput;
 
-	public boolean toSave(String name, String formula, String table) {
-		String path = PATH + name + ".txt";
+	public boolean toSave(String path, String name, String formula, String table) {
+		String pathFull = path + "\\" + name + ".txt";
+                //System.out.println(pathFull);
+                
 		try {
-			file = new File(path);
+			file = new File(pathFull);
 			fileOutput = new FileOutputStream(file);
-			fileOutput.write(("Proposição: " + formula + "\n").getBytes());
-			fileOutput.write("Tabela:\n".getBytes());
+			fileOutput.write(("Proposition: " + formula + "\n").getBytes());
+			fileOutput.write("Table:\n".getBytes());
 			fileOutput.write(table.getBytes());
 			fileOutput.close();
 			return true;
 		} catch (FileNotFoundException e) {
-			System.err.println("Problema não encontrado" + path);
+			System.err.println("Problema não encontrado" + pathFull);
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
