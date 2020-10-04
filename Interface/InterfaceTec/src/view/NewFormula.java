@@ -15,6 +15,12 @@ public class NewFormula extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
     }
+    
+    public NewFormula(String formula) {
+        initComponents();
+        setLocationRelativeTo(null);
+        new_text.setText(formula);
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

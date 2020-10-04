@@ -2,6 +2,7 @@ package view;
 
 import java.io.File;
 import javax.swing.JFileChooser;
+import model.ReadWriteTxt;
 
 public class LoadFormula extends javax.swing.JFrame {
 
@@ -16,6 +17,7 @@ public class LoadFormula extends javax.swing.JFrame {
         load_menu = new javax.swing.JButton();
         Load_text_formula = new javax.swing.JTextField();
         load_search = new javax.swing.JButton();
+        load_search1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Load Formula");
@@ -37,7 +39,7 @@ public class LoadFormula extends javax.swing.JFrame {
         Load_text_formula.setEditable(false);
         Load_text_formula.setBackground(new java.awt.Color(255, 255, 255));
         Load_text_formula.setFont(new java.awt.Font("Georgia", 0, 24)); // NOI18N
-        Load_text_formula.setText(" Add TXT File");
+        Load_text_formula.setText("Add TXT File");
         Load_text_formula.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         Load_text_formula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -47,12 +49,23 @@ public class LoadFormula extends javax.swing.JFrame {
 
         load_search.setBackground(new java.awt.Color(255, 255, 255));
         load_search.setFont(new java.awt.Font("Georgia", 0, 36)); // NOI18N
-        load_search.setText("Search >");
+        load_search.setText("Search");
         load_search.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         load_search.setContentAreaFilled(false);
         load_search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 load_searchActionPerformed(evt);
+            }
+        });
+
+        load_search1.setBackground(new java.awt.Color(255, 255, 255));
+        load_search1.setFont(new java.awt.Font("Georgia", 0, 36)); // NOI18N
+        load_search1.setText("Load >");
+        load_search1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        load_search1.setContentAreaFilled(false);
+        load_search1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                load_search1ActionPerformed(evt);
             }
         });
 
@@ -63,13 +76,17 @@ public class LoadFormula extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Load_text_formula, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(load_search, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(load_search1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(load_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(493, 493, 493))))
-                .addContainerGap(25, Short.MAX_VALUE))
+                            .addComponent(Load_text_formula, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(25, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -79,7 +96,9 @@ public class LoadFormula extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Load_text_formula, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(load_search, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(load_search, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(load_search1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -96,10 +115,10 @@ public class LoadFormula extends javax.swing.JFrame {
         file.setFileSelectionMode(JFileChooser.FILES_ONLY);
         int i = file.showSaveDialog(null);
         if (i == 1) {
-            Load_text_formula.setText("");
+            Load_text_formula.setText("Add TXT File");
         } else {
             File arquivo = file.getSelectedFile();
-
+            
             Load_text_formula.setText(arquivo.getPath());
         }
 
@@ -108,6 +127,21 @@ public class LoadFormula extends javax.swing.JFrame {
     private void Load_text_formulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Load_text_formulaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Load_text_formulaActionPerformed
+
+    private void load_search1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_load_search1ActionPerformed
+        // TODO add your handling code here:
+        ReadWriteTxt rW = new ReadWriteTxt();
+            if (!Load_text_formula.getText().equals("Add TXT File")&&!Load_text_formula.getText().equals("No file selected")) {
+                String formula = rW.toRecover(Load_text_formula.getText());
+                System.out.println(formula);
+                new NewFormula(formula).setVisible(true);
+                this.setVisible(false);
+            }
+            else {
+                Load_text_formula.setText("No file selected");
+            }
+            
+    }//GEN-LAST:event_load_search1ActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -121,5 +155,6 @@ public class LoadFormula extends javax.swing.JFrame {
     private javax.swing.JTextField Load_text_formula;
     private javax.swing.JButton load_menu;
     private javax.swing.JButton load_search;
+    private javax.swing.JButton load_search1;
     // End of variables declaration//GEN-END:variables
 }

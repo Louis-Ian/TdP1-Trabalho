@@ -45,14 +45,13 @@ public class ReadWriteTxt {
 		return false;
 	}
 
-	public String toRecover(String name) {
-		String path = PATH + name + ".txt";
+	public String toRecover(String path) {;
 		try {
 			fileInput= new FileInputStream(path);
 			InputStreamReader reader = new InputStreamReader(fileInput);
 			BufferedReader bufferReader = new BufferedReader(reader);
 			
-			return bufferReader.readLine().split(":")[1];
+			return bufferReader.readLine().split(": ")[1];
 
 		} catch (FileNotFoundException e) {
 			System.err.println("Problema não encontrado" + path);
