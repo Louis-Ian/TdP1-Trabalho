@@ -45,6 +45,16 @@ public class TableTreatment {
         return values;
     }
     
+    public static String[][] tableGenerator(int linha, int coluna){
+        String[][] values = new String[linha][coluna];
+        for (int i = 0; i < values.length; i++) {
+            for (int j = 0; j < values[i].length; j++) {
+                values[i][j] = "0"; 
+            }   
+        }
+        return values;
+    }
+    
     
     public static void mostrarTable(String[][] matriz) {
         for (int i = 0; i < matriz.length; i++) {

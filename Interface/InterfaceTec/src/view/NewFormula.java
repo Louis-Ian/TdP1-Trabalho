@@ -400,7 +400,7 @@ public class NewFormula extends javax.swing.JFrame {
             //Clauses + Formulas Header
             String [] tableHeader = TableTreatment.tableHeaderConstructor(Clauses,Clauses);
             //Clauses + Formulas Rows
-            String [][] tableRow = TableTreatment.tableRowConstructor(FormulaTreatment.generateFormulaValues(Clauses.length),FormulaTreatment.generateFormulaValues(Clauses.length));
+            String [][] tableRow = TableTreatment.tableRowConstructor(FormulaTreatment.generateFormulaValues(Clauses.length),TableTreatment.tableGenerator(FormulaTreatment.generateFormulaValues(Clauses.length).length,Clauses.length));
             //Result(tableHeader,tableRows)
             Result resultScreen = new Result(tableHeader, tableRow);
             resultScreen.setVisible(true);
