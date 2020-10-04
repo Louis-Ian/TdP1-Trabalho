@@ -386,17 +386,23 @@ public class NewFormula extends javax.swing.JFrame {
 
         Object[] options = {"Confirm", "Cancel"};
         UIManager.put("OptionPane.minimumSize", new Dimension(500, 100));
-        UIManager.getDefaults().put("OptionPane.background", new Color(190, 255, 255));
-        UIManager.put("Panel.background", new Color(190, 255, 255));
+        //UIManager.getDefaults().put("OptionPane.background", new Color(190, 255, 255));
+        //UIManager.put("Panel.background", new Color(190, 255, 255));
         UIManager.put("OptionPane.messageFont", new FontUIResource(new Font(
                 "Arial", Font.BOLD, 18)));
 
         int o = JOptionPane.showOptionDialog(null, "The formula entered was: " + new_text.getText(), "Confirmation", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         if (o == 0) {
-            new Result().setVisible(true);
+           
+            String[] Clauses = FormulaTreatment.getClauses(new_text.getText());
+            
+            //Result(tableHeader,tableRows)
+            Result resultScreen = new Result(Clauses, FormulaTreatment.generateFormulaValues(Clauses.length));
+            resultScreen.setVisible(true);
             this.setVisible(false);
-        }                
-        FormulaTreatment.tratarFormula(new_text.getText());                
+        }
+        
+        //FormulaTreatment.tratarFormula(new_text.getText());                
     }//GEN-LAST:event_new_resultActionPerformed
 
     private void new_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_textActionPerformed

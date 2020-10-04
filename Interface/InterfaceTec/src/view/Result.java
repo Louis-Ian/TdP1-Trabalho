@@ -10,7 +10,10 @@ import javax.swing.table.JTableHeader;
 
 public class Result extends javax.swing.JFrame {
 
-    public Result() {
+    public Result(String[] tableHeader,
+    String [][] tableRows) {
+        this.tableHeader = tableHeader;
+        this.tableRows = tableRows;
         initComponents();
         ajustComponents();
         setLocationRelativeTo(null);
@@ -86,19 +89,8 @@ public class Result extends javax.swing.JFrame {
         
         //valores da tabela
         Table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"V", "V", "V", "?", "?", "?", "?"},
-                {"V", "V", "F", "?", "?", "?", "?"},
-                {"V", "F", "V", "?", "?", "?", "?"},
-                {"V", "F", "F", "?", "?", "?", "?"},
-                {"F", "V", "V", "?", "?", "?", "?"},
-                {"F", "V", "F", "?", "?", "?", "?"},
-                {"F", "F", "V", "?", "?", "?", "?"},
-                {"F", "F", "F", "?", "?", "?", "?"}
-            },
-            new String [] {
-                "TESTE", "B", "C", "P1", "P2", "P3", "P4"
-            }
+            tableRows,
+            tableHeader
         ) {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
@@ -197,10 +189,20 @@ public class Result extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Result().setVisible(true);
+                //new Result().setVisible(true);
             }
         });
     }
+    
+    public void setTable(String[] tableHeader,
+    String [][] tableRows){
+        this.tableHeader = tableHeader;
+        this.tableRows = tableRows;
+    
+    }
+    
+    private String[] tableHeader;
+    private String [][] tableRows;
     
     private javax.swing.JTable Table;
     private javax.swing.JScrollPane ScrollPane1;

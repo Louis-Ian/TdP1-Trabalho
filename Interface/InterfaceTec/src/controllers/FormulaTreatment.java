@@ -11,7 +11,7 @@ public class FormulaTreatment {
         System.out.println(getClauses(formula));
     }
 
-    private static ArrayList<String> getClauses(String formula) {
+    public static String[] getClauses(String formula) {
         String[] clauses = formula.replace("(", "").replace(")", "").replace("~", "").split(" ");
         ArrayList<String> list = new ArrayList<>();
         for (int i = 0; i < clauses.length; i += 2) {
@@ -20,35 +20,41 @@ public class FormulaTreatment {
             }
         }
         generateFormulaValues(list.size());
-        return list;
+        String[] listaretorno = new String[list.size()];
+        for(int j = 0; j<list.size();j++){
+            listaretorno[j] = list.get(j);
+        }
+        return listaretorno;
     }
 
-    private static void generateFormulaValues(int length) {
+    public static String[][] generateFormulaValues(int length) {
         int linha = (int) Math.pow(2, length);
         int count, line;
-        boolean start = true;
+        String start = "T";
 
-        boolean[][] values = new boolean[linha][length];
+        String[][] values = new String[linha][length];
         for (int i = 0; i < length; i++) {
             line = (int) Math.floor(Math.pow(2, length - 1 - i));
             count = 0;
             for (int j = 0; j < linha; j++) {
-                if (count < line && start) {
-                    values[j][i] = true;
+                if (count < line && start == "T") {
+                    values[j][i] = "T";
                     count++;
                 } else {
-                    start = false;
+                    values[j][i] = "F";
+                    start = "F";
                     count--;
                 }
                 if (count == 0) {
-                    start = true;
+                    start = "T";
                 }
             }
         }
-        mostrarTable(values);
+        //mostrarTable(values);
+        return values;
     }
 
-    private static void mostrarTable(boolean[][] matriz) {
+    public static void mostrarTable(String[][] matriz) {
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[i].length; j++) {
                 System.out.print(matriz[i][j] + " ");
