@@ -12,7 +12,7 @@ public class FormulaTreatment {
     }
 
     private static ArrayList<String> getClauses(String formula) {
-        String[] clauses = formula.replace("(", "").replace(")", "").split(" ");
+        String[] clauses = formula.replace("(", "").replace(")", "").replace("~", "").split(" ");
         ArrayList<String> list = new ArrayList<>();
         for (int i = 0; i < clauses.length; i += 2) {
             if (!list.contains(clauses[i])) {
@@ -25,15 +25,23 @@ public class FormulaTreatment {
 
     private static void generateFormulaValues(int length) {
         int linha = (int) Math.pow(2, length);
-        int count = 0;
-        int line;
+        int count, line;
+        boolean start = true;
+
         boolean[][] values = new boolean[linha][length];
         for (int i = 0; i < length; i++) {
-            line = (int) Math.floor(Math.pow(2, linha - 1 - i) / 2);
+            line = (int) Math.floor(Math.pow(2, length - 1 - i));
+            count = 0;
             for (int j = 0; j < linha; j++) {
-                if (count > line) {
+                if (count < line && start) {
                     values[j][i] = true;
                     count++;
+                } else {
+                    start = false;
+                    count--;
+                }
+                if (count == 0) {
+                    start = true;
                 }
             }
         }
