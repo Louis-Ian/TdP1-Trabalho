@@ -101,7 +101,7 @@ public class FormulaTreatment {
     private boolean[][] generateFormulaValues() {
         int count, line;
         boolean start = true;
-        values = new boolean[totalLines][length];
+        values = new boolean[totalLines][length+1];
         for (int i = 0; i < length; i++) {
             line = (int) Math.floor(Math.pow(2, length - 1 - i));
             count = 0;
@@ -124,7 +124,7 @@ public class FormulaTreatment {
     private String solvedFormula = formula;
     private void solveFormula(){
         
-        for(int i = 0; i < length; i++){
+        for(int i = 0; i < totalLines; i++){
             solvedFormula = formula;
             
             while(solvedFormula.length() > 1){
@@ -138,9 +138,20 @@ public class FormulaTreatment {
                         }
                     }
                 }
+                while(seekTier2Operator() != -1){
+
+                    solveTier2Operation(i);
+
+                    while(seekTier3Operator() != -1){
+                        solveTier3Operation(i);
+                    }
+                }
+                while(seekTier3Operator() != -1){
+                    solveTier3Operation(i);
+                }
             }
             
-            values[length-1][i] = StrToBool(solvedFormula);
+            values[i][length] = StrToBool(solvedFormula);
         }
         
     }
@@ -149,15 +160,21 @@ public class FormulaTreatment {
     // Procura por abertura e fechamento de parenteses ( )
     private int[] seekTier1Operator(){
         int[] bracketsIndex = {-1, -1};
-        bracketsIndex[0] = formula.lastIndexOf("(");
-        bracketsIndex[1] = formula.indexOf(")", bracketsIndex[0]);
+        bracketsIndex[0] = solvedFormula.lastIndexOf("(");
+        bracketsIndex[1] = solvedFormula.indexOf(")", bracketsIndex[0]);
         return bracketsIndex;
     }
     
     private int seekTier2Operator(){
-        int indexNOT = formula.indexOf("¬", seekTier1Operator()[0]);
+        int indexNOT;
         
-        if(indexNOT == -1 || indexNOT > seekTier1Operator()[1]){
+        if(seekTier1Operator()[0] == -1){
+            indexNOT = solvedFormula.indexOf("¬");
+        } else {
+            indexNOT = solvedFormula.indexOf("¬", seekTier1Operator()[0]);
+        }
+        
+        if(indexNOT == -1 || (indexNOT > seekTier1Operator()[1] && seekTier1Operator()[1] > 0)){
             return -1;
         } else {
             return indexNOT;
@@ -175,8 +192,8 @@ public class FormulaTreatment {
     
     
     private int seekTier3Operator(){
-        int indexAND = formula.indexOf(" AND ", seekTier1Operator()[0]);
-        int indexOR = formula.indexOf(" OR ", seekTier1Operator()[0]);
+        int indexAND = solvedFormula.indexOf(" AND ", seekTier1Operator()[0]);
+        int indexOR = solvedFormula.indexOf(" OR ", seekTier1Operator()[0]);
         
         if(indexOR < indexAND && indexOR < seekTier1Operator()[1]){
             return indexOR;
