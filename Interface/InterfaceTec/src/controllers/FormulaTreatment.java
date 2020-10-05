@@ -140,6 +140,9 @@ public class FormulaTreatment {
                             solveTier3Operation(i);
                         }
                     }
+                    while(seekTier3Operator() != -1){
+                        solveTier3Operation(i);
+                    }
                 }
                 
                 if(seekTier1Operator()[0] == 0){
