@@ -71,15 +71,15 @@ public class FormulaTreatment {
     private boolean getClauseBool(int line, char clause){
         switch(clause){
             case 'A':
-                return values[line][0];
+                return values[line][this.list.indexOf("A")];
             case 'B':
-                return values[line][1];
+                return values[line][this.list.indexOf("B")];
             case 'C':
-                return values[line][2];
+                return values[line][this.list.indexOf("C")];
             case 'D':
-                return values[line][3];
+                return values[line][this.list.indexOf("D")];
             case 'E':
-                return values[line][4];
+                return values[line][this.list.indexOf("E")];
             default:
                 return true;
         }
