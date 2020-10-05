@@ -80,6 +80,10 @@ public class FormulaTreatment {
                 return values[line][this.list.indexOf("D")];
             case 'E':
                 return values[line][this.list.indexOf("E")];
+            case 'T':
+                return true;
+            case 'F':
+                return false;
             default:
                 return true;
         }
@@ -147,6 +151,8 @@ public class FormulaTreatment {
                 
                 if(seekTier1Operator()[0] == 0){
                     solvedFormula = solvedFormula.charAt(seekTier1Operator()[0]+1) + solvedFormula.substring(seekTier1Operator()[1]+1);
+                } else if(seekTier1Operator()[0] > 0 && seekTier1Operator()[1] == solvedFormula.length()-1){
+                    solvedFormula = solvedFormula.substring(0, seekTier1Operator()[0]) + solvedFormula.charAt(seekTier1Operator()[0]+1);
                 } else if(seekTier1Operator()[0] > 0) {
                     solvedFormula = solvedFormula.substring(0, seekTier1Operator()[0]-1) + solvedFormula.charAt(seekTier1Operator()[0]+1) + solvedFormula.substring(seekTier1Operator()[1]+1);
                 }
