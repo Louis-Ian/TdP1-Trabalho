@@ -2,12 +2,16 @@ package view;
 
 import controllers.TableTreatment;
 import java.awt.Color;
+import java.awt.Component;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumnModel;
 import model.ReadWriteTxt;
 
 public class Result extends javax.swing.JFrame {
@@ -35,7 +39,6 @@ public class Result extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Results");
         setBackground(new java.awt.Color(255, 255, 255));
-        setResizable(false);
         setSize(new java.awt.Dimension(1366, 768));
 
         load_menu.setFont(new java.awt.Font("Georgia", 0, 24)); // NOI18N
@@ -150,7 +153,10 @@ public class Result extends javax.swing.JFrame {
         
         
         
-        Table.setRowHeight(40);
+        Table.setRowHeight(40); 
+        Table.setAutoResizeMode(JTable.	AUTO_RESIZE_ALL_COLUMNS);
+        
+
 
         DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
@@ -166,6 +172,23 @@ public class Result extends javax.swing.JFrame {
         
         
     }
+    
+    public void resizeColumnWidth(JTable table) {
+    final TableColumnModel columnModel = table.getColumnModel();
+    for (int column = 0; column < table.getColumnCount(); column++) {
+        int width = 40; // Min width
+        for (int row = 0; row < table.getRowCount(); row++) {
+            TableCellRenderer renderer = table.getCellRenderer(row, column);
+            Component comp = table.prepareRenderer(renderer, row, column);
+            width = Math.max(comp.getPreferredSize().width +1 , width);
+        }
+        if(width > 300) {
+            width=300; 
+        }
+        System.out.println(width);
+        columnModel.getColumn(column).setPreferredWidth(width);
+    }
+}
 
     private void load_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_load_menuActionPerformed
         new NewFormula().setVisible(true);

@@ -25,9 +25,12 @@ public class FormulaTreatment {
             Clauses[j] = list.get(j);
         }
         
+        String[] Formula = new String[1];
+        Formula[0] = this.formula;
+        
         //Clauses + Formulas Header
         //ISSO TA ERRADO POR ENQUANTO, SEGUNDO ARGUMENTO É PRA SER UMA LISTA COM AS FÓRMULAS
-        String [] tableHeader = TableTreatment.tableHeaderConstructor(Clauses,Clauses);
+        String [] tableHeader = TableTreatment.tableHeaderConstructor(Clauses,Formula);
         
         return tableHeader;
     }
@@ -45,7 +48,7 @@ public class FormulaTreatment {
         }
         
         //Clauses + Formulas Rows
-        String [][] tableRows = TableTreatment.tableRowConstructor(stringValues,TableTreatment.tableGenerator(totalLines,length));
+        String [][] tableRows = TableTreatment.tableRowConstructor(stringValues,TableTreatment.tableGenerator(totalLines,1));
         return tableRows;
     }
 
