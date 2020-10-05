@@ -87,14 +87,14 @@ public class FormulaTreatment {
 
     public String BoolToStr(boolean b){
         if(b){
-            return "V";
+            return "T";
         } else {
             return "F";
         }
     }
     
     public boolean StrToBool(String s){
-        if(s.equals("V")){
+        if(s.equals("T")){
             return true;
         } else{
             return false;
@@ -131,8 +131,9 @@ public class FormulaTreatment {
             solvedFormula = formula;
             
             while(solvedFormula.length() > 1){
-                while(seekTier1Operator()[1] != -1){
+                while(seekTier1Operator()[0] != -1 && (seekTier1Operator()[1] - seekTier1Operator()[0]) > 2){
                     while(seekTier2Operator() != -1){
+
                         solveTier2Operation(i);
 
                         while(seekTier3Operator() != -1){
@@ -140,6 +141,13 @@ public class FormulaTreatment {
                         }
                     }
                 }
+                
+                if(seekTier1Operator()[0] == 0){
+                    solvedFormula = solvedFormula.charAt(seekTier1Operator()[0]+1) + solvedFormula.substring(seekTier1Operator()[1]+1);
+                } else if(seekTier1Operator()[0] > 0) {
+                    solvedFormula = solvedFormula.substring(0, seekTier1Operator()[0]-1) + solvedFormula.charAt(seekTier1Operator()[0]+1) + solvedFormula.substring(seekTier1Operator()[1]+1);
+                }
+                
                 while(seekTier2Operator() != -1){
 
                     solveTier2Operation(i);
@@ -155,7 +163,6 @@ public class FormulaTreatment {
             formulaValues[i][0] = solvedFormula;
             //values[i][length] = StrToBool(solvedFormula);
         }
-        System.out.println(formulaValues);
     }
     
     // Seeks for opening and closing brackets ( )
@@ -197,40 +204,76 @@ public class FormulaTreatment {
         int indexAND = solvedFormula.indexOf(" AND ", seekTier1Operator()[0]);
         int indexOR = solvedFormula.indexOf(" OR ", seekTier1Operator()[0]);
         
-        if(indexOR < indexAND && indexOR < seekTier1Operator()[1]){
-            return indexOR;
-        } else if(indexAND < indexOR && indexAND < seekTier1Operator()[1]) {
-            return indexAND;
-        } else {
-            return -1;
+        if(indexOR > 0 && indexAND > 0){
+            if(indexOR < indexAND){
+                if(seekTier1Operator()[1] > 0 && indexOR < seekTier1Operator()[1]){
+                    return indexOR;
+                } else if(seekTier1Operator()[1] > 0 && indexOR > seekTier1Operator()[1]){
+                    return -1;
+                } else {
+                    return indexOR;
+                }
+            } else if(indexAND < indexOR){
+                if(seekTier1Operator()[1] > 0 && indexAND < seekTier1Operator()[1]) {
+                    return indexAND;
+                } else if(seekTier1Operator()[1] > 0 && indexAND > seekTier1Operator()[1]){
+                    return -1;
+                } else {
+                    return indexAND;
+                }
+            } 
+        } else if(indexOR > 0){
+            if(seekTier1Operator()[1] > 0 && indexOR < seekTier1Operator()[1]){
+                return indexOR;
+            } else if(seekTier1Operator()[1] > 0 && indexOR > seekTier1Operator()[1]){
+                return -1;
+            } else {
+                return indexOR;
+            }
+        } else if(indexAND > 0){
+            if(seekTier1Operator()[1] > 0 && indexAND < seekTier1Operator()[1]) {
+                return indexAND;
+            } else if(seekTier1Operator()[1] > 0 && indexAND > seekTier1Operator()[1]){
+                return -1;
+            } else {
+                return indexAND;
+            }
         }
+        
+        return -1;
     }
     
-    private boolean solveTier3Operation(int line){
+    private void solveTier3Operation(int line){
         int operationIndex = seekTier3Operator();
         String op = solvedFormula.substring(operationIndex, operationIndex+4);
         
-        char leftClause = solvedFormula.charAt(operationIndex-1);
-        char rightClause = solvedFormula.charAt(operationIndex+5);
-        
         IOperation clauseV;
         
-        if(" AND ".equals(op)){
+        if(" AND".equals(op)){
+            char leftClause = solvedFormula.charAt(operationIndex-1);
+            char rightClause = solvedFormula.charAt(operationIndex+5);
+            
             clauseV = new And(
                 new Proposition(getClauseBool(line, leftClause)),
                 new Proposition(getClauseBool(line, rightClause))
                 );
+            
+            String value = BoolToStr(clauseV.value());
+            solvedFormula = solvedFormula.substring(0, operationIndex-1) + value + solvedFormula.substring(operationIndex+6);
         } else {
+            char leftClause = solvedFormula.charAt(operationIndex-1);
+            char rightClause = solvedFormula.charAt(operationIndex+4);
+            
             clauseV = new Or(
                 new Proposition(getClauseBool(line, leftClause)),
                 new Proposition(getClauseBool(line, rightClause))
                 );
+            
+            String value = BoolToStr(clauseV.value());
+            solvedFormula = solvedFormula.substring(0, operationIndex-1) + value + solvedFormula.substring(operationIndex+5);
         }
             
-        String value = BoolToStr(clauseV.value());
-        solvedFormula = solvedFormula.substring(0, operationIndex) + value + solvedFormula.substring(operationIndex+2);
         
-        return false;
     }    
     
 // Future methods, for -> and <->
