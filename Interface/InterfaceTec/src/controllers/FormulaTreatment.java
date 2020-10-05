@@ -6,6 +6,7 @@ import model.*;
 public class FormulaTreatment {
 
     private boolean[][] values;
+    private String[][] formulaValues;
     private String formula;
     private int length;
     private int totalLines;
@@ -31,7 +32,6 @@ public class FormulaTreatment {
         Formula[0] = this.formula;
         
         //Clauses + Formulas Header
-        //ISSO TA ERRADO POR ENQUANTO, SEGUNDO ARGUMENTO É PRA SER UMA LISTA COM AS FÓRMULAS
         String [] tableHeader = TableTreatment.tableHeaderConstructor(Clauses,Formula);
         
         return tableHeader;
@@ -50,7 +50,7 @@ public class FormulaTreatment {
         }
         
         //Clauses + Formulas Rows
-        String [][] tableRows = TableTreatment.tableRowConstructor(stringValues,TableTreatment.tableGenerator(totalLines,1));
+        String [][] tableRows = TableTreatment.tableRowConstructor(stringValues,formulaValues);
         return tableRows;
     }
 
@@ -59,7 +59,7 @@ public class FormulaTreatment {
     }
 
     private void getClauses() {
-        String[] clauses = formula.replace("(", "").replace(")", "").replace("¬", "").replace(" OR ", "").replace(" AND ", "").split(" ");
+        String[] clauses = formula.replace("(", "").replace(")", "").replace("¬", "").replace("OR ", "").replace("AND ", "").split(" ");
         list = new ArrayList<>();
         for(int i = 0; i < clauses.length; i++) {
             if (!list.contains(clauses[i])) {
@@ -126,14 +126,13 @@ public class FormulaTreatment {
     
     private String solvedFormula = formula;
     private void solveFormula(){
-        
+        formulaValues = new String[totalLines][1];
         for(int i = 0; i < totalLines; i++){
             solvedFormula = formula;
             
             while(solvedFormula.length() > 1){
-                while(seekTier1Operator()[0] != -1){
+                while(seekTier1Operator()[1] != -1){
                     while(seekTier2Operator() != -1){
-
                         solveTier2Operation(i);
 
                         while(seekTier3Operator() != -1){
@@ -153,10 +152,10 @@ public class FormulaTreatment {
                     solveTier3Operation(i);
                 }
             }
-            
-            values[i][length] = StrToBool(solvedFormula);
+            formulaValues[i][0] = solvedFormula;
+            //values[i][length] = StrToBool(solvedFormula);
         }
-        
+        System.out.println(formulaValues);
     }
     
     // Seeks for opening and closing brackets ( )
