@@ -1,4 +1,5 @@
 package view;
+
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -134,7 +135,7 @@ public class LoadFormula extends javax.swing.JFrame {
         if (!Load_text_formula.getText().equals("Add TXT File") && !Load_text_formula.getText().equals("No file selected")) {
             String formula = rW.toRecover(Load_text_formula.getText());
 
-            if ("error".equals(formula) || (!formula.contains("OR") & !formula.contains("AND"))) {
+            if ("error".equals(formula) || (formula.length() == 0)) {
                 JOptionPane.showMessageDialog(
                         null,
                         "Invalid formula: " + formula,

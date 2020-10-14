@@ -21,6 +21,7 @@ public class FormulaTreatment {
         solveFormula();
     }
 
+    //Get the all clauses and the formula in string format
     public String[] getTableHead() {
         String[] Clauses = new String[list.size()];
         for (int j = 0; j < list.size(); j++) {
@@ -36,6 +37,7 @@ public class FormulaTreatment {
         return tableHeader;
     }
 
+    //Get the truth table in string format
     public String[][] getTableBody() {
         String stringValues[][] = new String[totalLines][length];
         for (int i = 0; i < stringValues.length; i++) {
@@ -55,13 +57,14 @@ public class FormulaTreatment {
         return list.size();
     }
 
+    //Get all the clauses
     private void getClauses() {
         String[] clauses = formula.replace("(", "").replace(")", "")
                 .replace("¬", "").replace("OR ", "").replace("AND ", "")
                 .split(" ");
         list = new ArrayList<>();
         for (int i = 0; i < clauses.length; i++) {
-            if (!list.contains(clauses[i]) && !"".equals(clauses[i])) {
+            if (!list.contains(clauses[i])) {
                 list.add(clauses[i]);
             }
         }
