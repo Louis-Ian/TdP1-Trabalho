@@ -1,25 +1,13 @@
 package view;
 
 import controllers.FormulaTreatment;
-import controllers.TableTreatment;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import javax.swing.JOptionPane;
-import javax.swing.UIManager;
-import javax.swing.plaf.FontUIResource;
+import utils.OptionDialogUtils;
 
 public class NewFormula extends javax.swing.JFrame {
 
     public NewFormula() {
         initComponents();
         setLocationRelativeTo(null);
-    }
-    
-    public NewFormula(String formula) {
-        initComponents();
-        setLocationRelativeTo(null);
-        new_text.setText(formula);
     }
 
     @SuppressWarnings("unchecked")
@@ -391,26 +379,16 @@ public class NewFormula extends javax.swing.JFrame {
     }//GEN-LAST:event_new_op_but_APAGARActionPerformed
 
     private void new_resultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_resultActionPerformed
+        int response = OptionDialogUtils.showOptionDialog("Confirmation",
+                "The formula entered was: " + new_text.getText());
+        if (response == 0) {
+            FormulaTreatment formula = new FormulaTreatment(new_text.getText());
 
-        Object[] options = {"Confirm", "Cancel"};
-        UIManager.put("OptionPane.minimumSize", new Dimension(500, 100));
-        //UIManager.getDefaults().put("OptionPane.background", new Color(190, 255, 255));
-        //UIManager.put("Panel.background", new Color(190, 255, 255));
-        UIManager.put("OptionPane.messageFont", new FontUIResource(new Font(
-                "Arial", Font.BOLD, 18)));
-
-        int o = JOptionPane.showOptionDialog(null, "The formula entered was: " + new_text.getText(), "Confirmation", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
-        if (o == 0) {
-                                   
-            FormulaTreatment formula = new FormulaTreatment(new_text.getText());                                  
-          
-            Result resultScreen = new Result(formula.getTableHead(), formula.getTableBody(),new_text.getText());
+            Result resultScreen = new Result(formula.getTableHead(), formula.getTableBody(), new_text.getText());
 
             resultScreen.setVisible(true);
             this.setVisible(false);
-        }
-        
-        //FormulaTreatment.tratarFormula(new_text.getText());                
+        }             
     }//GEN-LAST:event_new_resultActionPerformed
 
     private void new_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_textActionPerformed
