@@ -1,6 +1,4 @@
 package view;
-
-import controllers.FormulaTreatment;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -131,7 +129,7 @@ public class LoadFormula extends javax.swing.JFrame {
     }//GEN-LAST:event_Load_text_formulaActionPerformed
 
     private void load_search1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_load_search1ActionPerformed
-   
+
         ReadWriteTxt rW = new ReadWriteTxt();
         if (!Load_text_formula.getText().equals("Add TXT File") && !Load_text_formula.getText().equals("No file selected")) {
             String formula = rW.toRecover(Load_text_formula.getText());
@@ -147,11 +145,7 @@ public class LoadFormula extends javax.swing.JFrame {
                 int response = OptionDialogUtils.showOptionDialog("Confirmation",
                         "The formula entered was: " + formula);
                 if (response == 0) {
-                    FormulaTreatment getFormula = new FormulaTreatment(formula);
-
-                    Result resultScreen = new Result(getFormula.getTableHead(), getFormula.getTableBody(), formula);
-
-                    resultScreen.setVisible(true);
+                    new NewFormula(formula).setVisible(true);
                     this.setVisible(false);
                 }
             }

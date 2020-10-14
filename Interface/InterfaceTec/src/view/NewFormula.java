@@ -4,12 +4,18 @@ import controllers.FormulaTreatment;
 import utils.OptionDialogUtils;
 
 public class NewFormula extends javax.swing.JFrame {
-
+    
     public NewFormula() {
         initComponents();
         setLocationRelativeTo(null);
     }
-
+    
+    public NewFormula(String formula) {
+        initComponents();
+        setLocationRelativeTo(null);
+        new_text.setText(formula);
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -337,14 +343,23 @@ public class NewFormula extends javax.swing.JFrame {
 
     private void new_op_but_orActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_op_but_orActionPerformed
         String texto = new_text.getText();
-        new_text.setText(texto + " OR ");
+        correctPreposition(" OR ");
     }//GEN-LAST:event_new_op_but_orActionPerformed
 
     private void new_op_but_andActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_op_but_andActionPerformed
-        String texto = new_text.getText();
-        new_text.setText(texto + " AND ");
+        String texto = new_text.getText(); 
+        correctPreposition(" AND ");
     }//GEN-LAST:event_new_op_but_andActionPerformed
-
+    
+    private void correctPreposition(String preposition) {
+        String texto = new_text.getText();
+        if (texto.charAt(texto.length() - 1) == ' ') {
+            new_text.setText(texto + preposition.substring(1, preposition.length()));
+        } else {
+            new_text.setText(texto + preposition);
+        }
+    }
+    
     private void new_prop_but_AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_prop_but_AActionPerformed
         String texto = new_text.getText();
         new_text.setText(texto + "A");
@@ -373,6 +388,7 @@ public class NewFormula extends javax.swing.JFrame {
     private void new_op_but_APAGARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_op_but_APAGARActionPerformed
         String texto = new_text.getText();
         if (texto.length() > 0) {
+            
             texto = texto.substring(0, texto.length() - 1);
         }
         new_text.setText(texto);
@@ -383,18 +399,18 @@ public class NewFormula extends javax.swing.JFrame {
                 "The formula entered was: " + new_text.getText());
         if (response == 0) {
             FormulaTreatment formula = new FormulaTreatment(new_text.getText());
-
+            
             Result resultScreen = new Result(formula.getTableHead(), formula.getTableBody(), new_text.getText());
-
+            
             resultScreen.setVisible(true);
             this.setVisible(false);
-        }             
+        }
     }//GEN-LAST:event_new_resultActionPerformed
 
     private void new_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_textActionPerformed
 
     }//GEN-LAST:event_new_textActionPerformed
-
+    
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
