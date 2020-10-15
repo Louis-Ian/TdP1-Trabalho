@@ -8,6 +8,7 @@ public class FormulaTreatment {
     private boolean[][] values;
     private String[][] formulaValues;
     private String formula;
+    private String solvedFormula;
     private int length;
     private int totalLines;
     private ArrayList<String> list;
@@ -128,7 +129,6 @@ public class FormulaTreatment {
         return values;
     }
     
-    private String solvedFormula = formula;
     private void solveFormula(){
         formulaValues = new String[totalLines][1];
         for(int i = 0; i < totalLines; i++){
