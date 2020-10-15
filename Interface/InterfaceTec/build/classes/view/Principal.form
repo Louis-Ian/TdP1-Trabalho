@@ -40,7 +40,6 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="menu_new_form" max="32767" attributes="0"/>
                           <Component id="menu_load_form" min="-2" pref="250" max="-2" attributes="0"/>
-                          <Component id="menu_load_table" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="172" max="-2" attributes="0"/>
                       <Component id="menu_about" min="-2" pref="114" max="-2" attributes="0"/>
@@ -65,15 +64,13 @@
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Component id="menu_new_form" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="menu_load_form" min="-2" pref="50" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="menu_load_table" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="menu_load_form" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                           <Component id="menu_about" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace min="3" pref="28" max="32767" attributes="0"/>
+              <EmptySpace min="60" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -155,26 +152,6 @@
           <Color blue="ff" green="ff" red="be" type="rgb"/>
         </Property>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="menu_load_table">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Georgia" size="36" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Load Table"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder roundedCorners="true" thickness="2"/>
-          </Border>
-        </Property>
-        <Property name="contentAreaFilled" type="boolean" value="false"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menu_load_tableActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>

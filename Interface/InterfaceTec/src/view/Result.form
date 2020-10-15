@@ -47,7 +47,7 @@
                   <Component id="result_save" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                   <Component id="load_menu" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="415" max="32767" attributes="0"/>
+              <EmptySpace pref="394" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

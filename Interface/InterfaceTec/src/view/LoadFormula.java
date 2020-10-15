@@ -1,13 +1,10 @@
 package view;
 
-import java.awt.Dimension;
-import java.awt.Font;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
-import javax.swing.plaf.FontUIResource;
 import model.ReadWriteTxt;
+import utils.OptionDialogUtils;
 
 public class LoadFormula extends javax.swing.JFrame {
 
@@ -15,6 +12,7 @@ public class LoadFormula extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -123,10 +121,8 @@ public class LoadFormula extends javax.swing.JFrame {
             Load_text_formula.setText("Add TXT File");
         } else {
             File arquivo = file.getSelectedFile();
-            
             Load_text_formula.setText(arquivo.getPath());
         }
-
     }//GEN-LAST:event_load_searchActionPerformed
 
     private void Load_text_formulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Load_text_formulaActionPerformed
@@ -134,26 +130,29 @@ public class LoadFormula extends javax.swing.JFrame {
     }//GEN-LAST:event_Load_text_formulaActionPerformed
 
     private void load_search1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_load_search1ActionPerformed
-        // TODO add your handling code here:
+
         ReadWriteTxt rW = new ReadWriteTxt();
-            if (!Load_text_formula.getText().equals("Add TXT File")&&!Load_text_formula.getText().equals("No file selected")) {
-                String formula = rW.toRecover(Load_text_formula.getText());
-                System.out.println(formula);
-                Object[] options = {"Confirm", "Cancel"};
-                UIManager.put("OptionPane.minimumSize", new Dimension(500, 100));
-                UIManager.put("OptionPane.messageFont", new FontUIResource(new Font(
-                "Arial", Font.BOLD, 18)));
-                
-                int o = JOptionPane.showOptionDialog(null, "The formula entered was: " + formula, "Confirmation", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
-                 if (o == 0) {
+        if (!Load_text_formula.getText().equals("Add TXT File") && !Load_text_formula.getText().equals("No file selected")) {
+            String formula = rW.toRecover(Load_text_formula.getText());
+
+            if ("error".equals(formula) || (formula.length() == 0)) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Invalid formula: " + formula,
+                        "Validation error",
+                        JOptionPane.ERROR_MESSAGE
+                );
+            } else {
+                int response = OptionDialogUtils.showOptionDialog("Confirmation",
+                        "The formula entered was: " + formula);
+                if (response == 0) {
                     new NewFormula(formula).setVisible(true);
                     this.setVisible(false);
-                 }
+                }
             }
-            else {
-                Load_text_formula.setText("No file selected");
-            }
-            
+        } else {
+            Load_text_formula.setText("No file selected");
+        }
     }//GEN-LAST:event_load_search1ActionPerformed
 
     public static void main(String args[]) {
