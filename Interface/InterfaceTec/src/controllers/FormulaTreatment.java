@@ -147,12 +147,12 @@ public class FormulaTreatment {
 
                         solveNOTOperation(i);
 
-                        while (seekTier3Operator() != -1) {
-                            solveTier3Operation(i);
+                        while (seekANDOperator() != -1) {
+                            solveANDOperation(i);
                         }
                     }
-                    while (seekTier3Operator() != -1) {
-                        solveTier3Operation(i);
+                    while (seekANDOperator() != -1) {
+                        solveANDOperation(i);
                     }
                 }
 
@@ -168,12 +168,12 @@ public class FormulaTreatment {
 
                     solveNOTOperation(i);
 
-                    while (seekTier3Operator() != -1) {
-                        solveTier3Operation(i);
+                    while (seekANDOperator() != -1) {
+                        solveANDOperation(i);
                     }
                 }
-                while (seekTier3Operator() != -1) {
-                    solveTier3Operation(i);
+                while (seekANDOperator() != -1) {
+                    solveANDOperation(i);
                 }
             }
             formulaValues[i][0] = solvedFormula;
@@ -229,7 +229,58 @@ public class FormulaTreatment {
     }
     
     // Returns the index of the AND or OR operator, according to the logic precedence
-    private int seekTier3Operator() {
+    private int seekANDOperator() {
+        int indexAND = solvedFormula.indexOf(" AND ", seekBrackets()[0]);
+
+        if (indexAND > 0) {
+            if (seekBrackets()[1] > 0 && indexAND < seekBrackets()[1]) {
+                return indexAND;
+            } else if (seekBrackets()[1] > 0 && indexAND > seekBrackets()[1]) {
+                return -1;
+            } else {
+                return indexAND;
+            }
+        }
+
+        return -1;
+    }
+    
+    // Changes the "X and Y" or the "X or Y" substring to it's boolean value, according to the logic precedence
+    // and to the current values of X and Y in an specific line of the table
+    private void solveANDOperation(int line) {
+        int operationIndex = seekANDOperator();
+        String op = solvedFormula.substring(operationIndex, operationIndex + 4);
+
+        IOperation clauseV;
+
+        if (" AND".equals(op)) {
+            char leftClause = solvedFormula.charAt(operationIndex - 1);
+            char rightClause = solvedFormula.charAt(operationIndex + 5);
+
+            clauseV = new And(
+                    new Proposition(getClauseBool(line, leftClause)),
+                    new Proposition(getClauseBool(line, rightClause))
+            );
+
+            String value = BoolToStr(clauseV.value());
+            solvedFormula = solvedFormula.substring(0, operationIndex - 1) + value + solvedFormula.substring(operationIndex + 6);
+        } else {
+            char leftClause = solvedFormula.charAt(operationIndex - 1);
+            char rightClause = solvedFormula.charAt(operationIndex + 4);
+
+            clauseV = new Or(
+                    new Proposition(getClauseBool(line, leftClause)),
+                    new Proposition(getClauseBool(line, rightClause))
+            );
+
+            String value = BoolToStr(clauseV.value());
+            solvedFormula = solvedFormula.substring(0, operationIndex - 1) + value + solvedFormula.substring(operationIndex + 5);
+        }
+
+    }
+    
+    // Returns the index of the AND or OR operator, according to the logic precedence
+    private int seekOROperator() {
         int indexAND = solvedFormula.indexOf(" AND ", seekBrackets()[0]);
         int indexOR = solvedFormula.indexOf(" OR ", seekBrackets()[0]);
 
@@ -275,7 +326,7 @@ public class FormulaTreatment {
     // Changes the "X and Y" or the "X or Y" substring to it's boolean value, according to the logic precedence
     // and to the current values of X and Y in an specific line of the table
     private void solveTier3Operation(int line) {
-        int operationIndex = seekTier3Operator();
+        int operationIndex = seekANDOperator();
         String op = solvedFormula.substring(operationIndex, operationIndex + 4);
 
         IOperation clauseV;
