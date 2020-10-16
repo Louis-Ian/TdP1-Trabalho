@@ -145,7 +145,7 @@ public class FormulaTreatment {
                 while (seekBrackets()[0] != -1 && (seekBrackets()[1] - seekBrackets()[0]) > 2) {
                     while (seekNOTOperator() != -1) {
 
-                        solveTier2Operation(i);
+                        solveNOTOperation(i);
 
                         while (seekTier3Operator() != -1) {
                             solveTier3Operation(i);
@@ -166,7 +166,7 @@ public class FormulaTreatment {
 
                 while (seekNOTOperator() != -1) {
 
-                    solveTier2Operation(i);
+                    solveNOTOperation(i);
 
                     while (seekTier3Operator() != -1) {
                         solveTier3Operation(i);
@@ -218,13 +218,14 @@ public class FormulaTreatment {
 
     // Changes the "¬X" substring to it's boolean value, according to the logic precedence
     // and to the current value of X in an specific line of the table
-    private void solveTier2Operation(int line) {
-        int operationIndex = seekNOTOperator();
-        char clause = solvedFormula.charAt(operationIndex + 1);
-        Not clauseV = new Not(new Proposition(getClauseBool(line, clause)));
-        String value = BoolToStr(clauseV.value());
+    private void solveNOTOperation(int line) {
+        int operatorIndex = seekNOTOperator();
+        
+        char clause = solvedFormula.charAt(operatorIndex + 1);
+        Not clauseOp = new Not(new Proposition(getClauseBool(line, clause)));
+        String value = BoolToStr(clauseOp.value());
 
-        solvedFormula = solvedFormula.substring(0, operationIndex) + value + solvedFormula.substring(operationIndex + 2);
+        solvedFormula = solvedFormula.substring(0, operatorIndex) + value + solvedFormula.substring(operatorIndex + 2);
     }
     
     // Returns the index of the AND or OR operator, according to the logic precedence
