@@ -22,7 +22,7 @@ public class FormulaTreatment {
         solveFormula();
     }
 
-    //Get the all clauses and the formula in string format
+    // Get the all clauses and the formula in string format
     public String[] getTableHead() {
         String[] Clauses = new String[list.size()];
         for (int j = 0; j < list.size(); j++) {
@@ -32,13 +32,13 @@ public class FormulaTreatment {
         String[] Formula = new String[1];
         Formula[0] = this.formula;
 
-        //Clauses + Formulas Header
+        // Clauses + Formulas Header
         String[] tableHeader = TableTreatment.tableHeaderConstructor(Clauses, Formula);
 
         return tableHeader;
     }
 
-    //Get the truth table in string format
+    // Get the truth table in string format
     public String[][] getTableBody() {
         String stringValues[][] = new String[totalLines][length];
         for (int i = 0; i < stringValues.length; i++) {
@@ -58,7 +58,7 @@ public class FormulaTreatment {
         return list.size();
     }
 
-    //Get all the clauses
+    // Get all the clauses present in the formula
     private void getClauses() {
         String[] clauses = formula.replace("(", "").replace(")", "")
                 .replace("¬", "").replace("OR ", "").replace("AND ", "")
@@ -71,6 +71,7 @@ public class FormulaTreatment {
         }
     }
 
+    // Gets the boolean value of clause X on an specific line N
     private boolean getClauseBool(int line, char clause) {
         switch (clause) {
             case 'A':
@@ -92,6 +93,7 @@ public class FormulaTreatment {
         }
     }
 
+    // Converts boolean to the String used on the tables
     public String BoolToStr(boolean b) {
         if (b) {
             return "T";
@@ -100,6 +102,7 @@ public class FormulaTreatment {
         }
     }
 
+    // Converts the String on the table to it's boolean value
     public boolean StrToBool(String s) {
         if (s.equals("T")) {
             return true;
@@ -108,6 +111,7 @@ public class FormulaTreatment {
         }
     }
 
+    // Generates all the combinations of true and false for the amount of clauses
     private boolean[][] generateFormulaValues() {
         int count, line;
         boolean start = true;
@@ -131,6 +135,7 @@ public class FormulaTreatment {
         return values;
     }
 
+    // Calls the methods that solve for the different operators, according to logic precedence
     private void solveFormula() {  
         formulaValues = new String[totalLines][1];
         for (int i = 0; i < totalLines; i++) {
@@ -176,8 +181,8 @@ public class FormulaTreatment {
         }
     }
 
-    // Seeks for opening and closing brackets ( )
-    // Procura por abertura e fechamento de parenteses ( )
+    // Returns an array with the opening and closing brackets indexes, according to the logic precedence
+    // Returns {-1, -1} when there are no brackets
     private int[] seekTier1Operator() {
         int[] bracketsIndex = {-1, -1};
         bracketsIndex[0] = solvedFormula.lastIndexOf("(");
@@ -185,6 +190,7 @@ public class FormulaTreatment {
         return bracketsIndex;
     }
 
+    // Returns the index of the ¬ (NOT) operator, according to the logic precedence
     private int seekTier2Operator() {
         int indexNOT;
 
@@ -201,6 +207,8 @@ public class FormulaTreatment {
         }
     }
 
+    // Changes the "¬X" substring to it's boolean value, according to the logic precedence
+    // and to the current value of X in an specific line of the table
     private void solveTier2Operation(int line) {
         int operationIndex = seekTier2Operator();
         char clause = solvedFormula.charAt(operationIndex + 1);
@@ -209,7 +217,8 @@ public class FormulaTreatment {
 
         solvedFormula = solvedFormula.substring(0, operationIndex) + value + solvedFormula.substring(operationIndex + 2);
     }
-
+    
+    // Returns the index of the AND or OR operator, according to the logic precedence
     private int seekTier3Operator() {
         int indexAND = solvedFormula.indexOf(" AND ", seekTier1Operator()[0]);
         int indexOR = solvedFormula.indexOf(" OR ", seekTier1Operator()[0]);
@@ -252,7 +261,9 @@ public class FormulaTreatment {
 
         return -1;
     }
-
+    
+    // Changes the "X and Y" or the "X or Y" substring to it's boolean value, according to the logic precedence
+    // and to the current values of X and Y in an specific line of the table
     private void solveTier3Operation(int line) {
         int operationIndex = seekTier3Operator();
         String op = solvedFormula.substring(operationIndex, operationIndex + 4);
@@ -285,7 +296,8 @@ public class FormulaTreatment {
 
     }
 
-// Future methods, for -> and <->
+//    // Changes the "X -> Y" or the "X <-> Y" substring to it's boolean value, according to the logic precedence
+//    // and to the current values of X and Y in an specific line of the table
 //    private int seekTier4Operator(){
 //        int indexAND = formula.indexOf(" AND ", seekTier1Operator()[0]);
 //        int indexOR = formula.indexOf(" OR ", seekTier1Operator()[0]);
@@ -304,6 +316,8 @@ public class FormulaTreatment {
 //        
 //        return false;
 //    }
+    
+    // Prints the table on the console
     public void showTable(String[][] matrix) {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
