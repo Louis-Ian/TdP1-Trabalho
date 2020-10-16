@@ -135,15 +135,15 @@ public class FormulaTreatment {
         return values;
     }
 
-    // Calls the methods that solve for the different operators, according to logic precedence
+    // Calls the methods that solve for the different operations, according to logic precedence
     private void solveFormula() {  
         formulaValues = new String[totalLines][1];
         for (int i = 0; i < totalLines; i++) {
             solvedFormula = formula;
 
             while (solvedFormula.length() > 1) {
-                while (seekTier1Operator()[0] != -1 && (seekTier1Operator()[1] - seekTier1Operator()[0]) > 2) {
-                    while (seekTier2Operator() != -1) {
+                while (seekBrackets()[0] != -1 && (seekBrackets()[1] - seekBrackets()[0]) > 2) {
+                    while (seekNOTOperator() != -1) {
 
                         solveTier2Operation(i);
 
@@ -156,15 +156,15 @@ public class FormulaTreatment {
                     }
                 }
 
-                if (seekTier1Operator()[0] == 0) {
-                    solvedFormula = solvedFormula.charAt(seekTier1Operator()[0] + 1) + solvedFormula.substring(seekTier1Operator()[1] + 1);
-                } else if (seekTier1Operator()[0] > 0 && seekTier1Operator()[1] == solvedFormula.length() - 1) {
-                    solvedFormula = solvedFormula.substring(0, seekTier1Operator()[0]) + solvedFormula.charAt(seekTier1Operator()[0] + 1);
-                } else if (seekTier1Operator()[0] > 0) {
-                    solvedFormula = solvedFormula.substring(0, seekTier1Operator()[0] - 1) + solvedFormula.charAt(seekTier1Operator()[0] + 1) + solvedFormula.substring(seekTier1Operator()[1] + 1);
+                if (seekBrackets()[0] == 0) {
+                    solvedFormula = solvedFormula.charAt(seekBrackets()[0] + 1) + solvedFormula.substring(seekBrackets()[1] + 1);
+                } else if (seekBrackets()[0] > 0 && seekBrackets()[1] == solvedFormula.length() - 1) {
+                    solvedFormula = solvedFormula.substring(0, seekBrackets()[0]) + solvedFormula.charAt(seekBrackets()[0] + 1);
+                } else if (seekBrackets()[0] > 0) {
+                    solvedFormula = solvedFormula.substring(0, seekBrackets()[0] - 1) + solvedFormula.charAt(seekBrackets()[0] + 1) + solvedFormula.substring(seekBrackets()[1] + 1);
                 }
 
-                while (seekTier2Operator() != -1) {
+                while (seekNOTOperator() != -1) {
 
                     solveTier2Operation(i);
 
@@ -183,24 +183,33 @@ public class FormulaTreatment {
 
     // Returns an array with the opening and closing brackets indexes, according to the logic precedence
     // Returns {-1, -1} when there are no brackets
-    private int[] seekTier1Operator() {
+    private int[] seekBrackets() {
         int[] bracketsIndex = {-1, -1};
         bracketsIndex[0] = solvedFormula.lastIndexOf("(");
-        bracketsIndex[1] = solvedFormula.indexOf(")", bracketsIndex[0]);
-        return bracketsIndex;
+        
+        if(bracketsIndex[0] >= 0){
+            bracketsIndex[1] = solvedFormula.indexOf(")", bracketsIndex[0]);
+        }
+        
+        if(bracketsIndex[0] >= 0 && bracketsIndex[1] >= 0){
+            return bracketsIndex;
+        } else {
+            int[] r = {-1, -1};
+            return r;
+        }
     }
 
     // Returns the index of the ¬ (NOT) operator, according to the logic precedence
-    private int seekTier2Operator() {
+    private int seekNOTOperator() {
         int indexNOT;
 
-        if (seekTier1Operator()[0] == -1) {
+        if (seekBrackets()[0] == -1) {
             indexNOT = solvedFormula.indexOf("¬");
         } else {
-            indexNOT = solvedFormula.indexOf("¬", seekTier1Operator()[0]);
+            indexNOT = solvedFormula.indexOf("¬", seekBrackets()[0]);
         }
 
-        if (indexNOT == -1 || (indexNOT > seekTier1Operator()[1] && seekTier1Operator()[1] > 0)) {
+        if (indexNOT == -1 || (indexNOT > seekBrackets()[1] && seekBrackets()[1] > 0)) {
             return -1;
         } else {
             return indexNOT;
@@ -210,7 +219,7 @@ public class FormulaTreatment {
     // Changes the "¬X" substring to it's boolean value, according to the logic precedence
     // and to the current value of X in an specific line of the table
     private void solveTier2Operation(int line) {
-        int operationIndex = seekTier2Operator();
+        int operationIndex = seekNOTOperator();
         char clause = solvedFormula.charAt(operationIndex + 1);
         Not clauseV = new Not(new Proposition(getClauseBool(line, clause)));
         String value = BoolToStr(clauseV.value());
@@ -220,39 +229,39 @@ public class FormulaTreatment {
     
     // Returns the index of the AND or OR operator, according to the logic precedence
     private int seekTier3Operator() {
-        int indexAND = solvedFormula.indexOf(" AND ", seekTier1Operator()[0]);
-        int indexOR = solvedFormula.indexOf(" OR ", seekTier1Operator()[0]);
+        int indexAND = solvedFormula.indexOf(" AND ", seekBrackets()[0]);
+        int indexOR = solvedFormula.indexOf(" OR ", seekBrackets()[0]);
 
         if (indexOR > 0 && indexAND > 0) {
             if (indexOR < indexAND) {
-                if (seekTier1Operator()[1] > 0 && indexOR < seekTier1Operator()[1]) {
+                if (seekBrackets()[1] > 0 && indexOR < seekBrackets()[1]) {
                     return indexOR;
-                } else if (seekTier1Operator()[1] > 0 && indexOR > seekTier1Operator()[1]) {
+                } else if (seekBrackets()[1] > 0 && indexOR > seekBrackets()[1]) {
                     return -1;
                 } else {
                     return indexOR;
                 }
             } else if (indexAND < indexOR) {
-                if (seekTier1Operator()[1] > 0 && indexAND < seekTier1Operator()[1]) {
+                if (seekBrackets()[1] > 0 && indexAND < seekBrackets()[1]) {
                     return indexAND;
-                } else if (seekTier1Operator()[1] > 0 && indexAND > seekTier1Operator()[1]) {
+                } else if (seekBrackets()[1] > 0 && indexAND > seekBrackets()[1]) {
                     return -1;
                 } else {
                     return indexAND;
                 }
             }
         } else if (indexOR > 0) {
-            if (seekTier1Operator()[1] > 0 && indexOR < seekTier1Operator()[1]) {
+            if (seekBrackets()[1] > 0 && indexOR < seekBrackets()[1]) {
                 return indexOR;
-            } else if (seekTier1Operator()[1] > 0 && indexOR > seekTier1Operator()[1]) {
+            } else if (seekBrackets()[1] > 0 && indexOR > seekBrackets()[1]) {
                 return -1;
             } else {
                 return indexOR;
             }
         } else if (indexAND > 0) {
-            if (seekTier1Operator()[1] > 0 && indexAND < seekTier1Operator()[1]) {
+            if (seekBrackets()[1] > 0 && indexAND < seekBrackets()[1]) {
                 return indexAND;
-            } else if (seekTier1Operator()[1] > 0 && indexAND > seekTier1Operator()[1]) {
+            } else if (seekBrackets()[1] > 0 && indexAND > seekBrackets()[1]) {
                 return -1;
             } else {
                 return indexAND;
