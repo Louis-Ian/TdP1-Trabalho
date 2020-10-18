@@ -142,7 +142,7 @@ public class FormulaTreatment {
             solvedFormula = formula;
 
             while (solvedFormula.length() > 1) {
-                while (seekBrackets()[0] != -1 && (seekBrackets()[1] - seekBrackets()[0]) > 2) {
+                while (seekParentheses()[0] != -1 && (seekParentheses()[1] - seekParentheses()[0]) > 2) {
                     while (seekNOTOperator() != -1) {
 
                         solveNOTOperation(i);
@@ -156,12 +156,12 @@ public class FormulaTreatment {
                     }
                 }
 
-                if (seekBrackets()[0] == 0) {
-                    solvedFormula = solvedFormula.charAt(seekBrackets()[0] + 1) + solvedFormula.substring(seekBrackets()[1] + 1);
-                } else if (seekBrackets()[0] > 0 && seekBrackets()[1] == solvedFormula.length() - 1) {
-                    solvedFormula = solvedFormula.substring(0, seekBrackets()[0]) + solvedFormula.charAt(seekBrackets()[0] + 1);
-                } else if (seekBrackets()[0] > 0) {
-                    solvedFormula = solvedFormula.substring(0, seekBrackets()[0] - 1) + solvedFormula.charAt(seekBrackets()[0] + 1) + solvedFormula.substring(seekBrackets()[1] + 1);
+                if (seekParentheses()[0] == 0) {
+                    solvedFormula = solvedFormula.charAt(seekParentheses()[0] + 1) + solvedFormula.substring(seekParentheses()[1] + 1);
+                } else if (seekParentheses()[0] > 0 && seekParentheses()[1] == solvedFormula.length() - 1) {
+                    solvedFormula = solvedFormula.substring(0, seekParentheses()[0]) + solvedFormula.charAt(seekParentheses()[0] + 1);
+                } else if (seekParentheses()[0] > 0) {
+                    solvedFormula = solvedFormula.substring(0, seekParentheses()[0] - 1) + solvedFormula.charAt(seekParentheses()[0] + 1) + solvedFormula.substring(seekParentheses()[1] + 1);
                 }
 
                 while (seekNOTOperator() != -1) {
@@ -181,16 +181,17 @@ public class FormulaTreatment {
         }
     }
 
-    // Returns an array with the opening and closing brackets indexes, according to logic precedence
-    // Returns {-1, -1} when there are no brackets
-    private int[] seekBrackets() {
-        int[] bracketsIndex = {-1, -1};
-        bracketsIndex[0] = solvedFormula.lastIndexOf("(");
+    // Returns an array with the opening and closing parentheses indexes, according to logic precedence
+    // Returns {-1, -1} when there are no parentheses
+    private int[] seekParentheses() {
+        int[] parenthesesIndex = {-1, -1};
+        parenthesesIndex[1] = solvedFormula.indexOf(")");
+        parenthesesIndex[0] = solvedFormula.substring(0, parenthesesIndex[1]).lastIndexOf("(");
         
-        if(bracketsIndex[0] >= 0){
-            bracketsIndex[1] = solvedFormula.indexOf(")", bracketsIndex[0]);
-            if(bracketsIndex[1] >= 0 && bracketsIndex[1] > bracketsIndex[0]){
-                return bracketsIndex;
+        if(parenthesesIndex[0] >= 0){
+            parenthesesIndex[1] = solvedFormula.indexOf(")", parenthesesIndex[0]);
+            if(parenthesesIndex[1] >= 0 && parenthesesIndex[1] > parenthesesIndex[0]){
+                return parenthesesIndex;
             }
         }
             
@@ -198,25 +199,25 @@ public class FormulaTreatment {
         return r;
     }
 
-    // Returns the index of the ¬ (NOT) operator, according to the logic precedence
+    // Returns the index of the ¬ (NOT) operator, according to logic precedence
     private int seekNOTOperator() {
         int indexNOT;
 
-        if (seekBrackets()[0] == -1) {
+        if (seekParentheses()[0] == -1) {
             indexNOT = solvedFormula.indexOf("¬");
         } else {
-            indexNOT = solvedFormula.indexOf("¬", seekBrackets()[0]);
+            indexNOT = solvedFormula.indexOf("¬", seekParentheses()[0]);
         }
 
-        if (indexNOT == -1 || (indexNOT > seekBrackets()[1] && seekBrackets()[1] > 0)) {
+        if (indexNOT == -1 || (indexNOT > seekParentheses()[1] && seekParentheses()[1] > 0)) {
             return -1;
         } else {
             return indexNOT;
         }
     }
 
-    // Changes the "¬X" substring to it's boolean value, according to the logic precedence
-    // and to the current value of X in an specific line of the table
+    // Changes the "¬X" substring to it's boolean value, according to logic precedence
+    // and according to the current value of X in an specific line of the table
     private void solveNOTOperation(int line) {
         int operatorIndex = seekNOTOperator();
         
@@ -227,14 +228,14 @@ public class FormulaTreatment {
         solvedFormula = solvedFormula.substring(0, operatorIndex) + value + solvedFormula.substring(operatorIndex + 2);
     }
     
-    // Returns the index of the AND or OR operator, according to the logic precedence
+    // Returns the index of the AND operator, according to logic precedence
     private int seekANDOperator() {
-        int indexAND = solvedFormula.indexOf(" AND ", seekBrackets()[0]);
+        int indexAND = solvedFormula.indexOf(" AND ", seekParentheses()[0]);
 
         if (indexAND > 0) {
-            if (seekBrackets()[1] > 0 && indexAND < seekBrackets()[1]) {
+            if (seekParentheses()[1] > 0 && indexAND < seekParentheses()[1]) {
                 return indexAND;
-            } else if (seekBrackets()[1] > 0 && indexAND > seekBrackets()[1]) {
+            } else if (seekParentheses()[1] > 0 && indexAND > seekParentheses()[1]) {
                 return -1;
             } else {
                 return indexAND;
@@ -280,39 +281,39 @@ public class FormulaTreatment {
     
     // Returns the index of the AND or OR operator, according to the logic precedence
     private int seekOROperator() {
-        int indexAND = solvedFormula.indexOf(" AND ", seekBrackets()[0]);
-        int indexOR = solvedFormula.indexOf(" OR ", seekBrackets()[0]);
+        int indexAND = solvedFormula.indexOf(" AND ", seekParentheses()[0]);
+        int indexOR = solvedFormula.indexOf(" OR ", seekParentheses()[0]);
 
         if (indexOR > 0 && indexAND > 0) {
             if (indexOR < indexAND) {
-                if (seekBrackets()[1] > 0 && indexOR < seekBrackets()[1]) {
+                if (seekParentheses()[1] > 0 && indexOR < seekParentheses()[1]) {
                     return indexOR;
-                } else if (seekBrackets()[1] > 0 && indexOR > seekBrackets()[1]) {
+                } else if (seekParentheses()[1] > 0 && indexOR > seekParentheses()[1]) {
                     return -1;
                 } else {
                     return indexOR;
                 }
             } else if (indexAND < indexOR) {
-                if (seekBrackets()[1] > 0 && indexAND < seekBrackets()[1]) {
+                if (seekParentheses()[1] > 0 && indexAND < seekParentheses()[1]) {
                     return indexAND;
-                } else if (seekBrackets()[1] > 0 && indexAND > seekBrackets()[1]) {
+                } else if (seekParentheses()[1] > 0 && indexAND > seekParentheses()[1]) {
                     return -1;
                 } else {
                     return indexAND;
                 }
             }
         } else if (indexOR > 0) {
-            if (seekBrackets()[1] > 0 && indexOR < seekBrackets()[1]) {
+            if (seekParentheses()[1] > 0 && indexOR < seekParentheses()[1]) {
                 return indexOR;
-            } else if (seekBrackets()[1] > 0 && indexOR > seekBrackets()[1]) {
+            } else if (seekParentheses()[1] > 0 && indexOR > seekParentheses()[1]) {
                 return -1;
             } else {
                 return indexOR;
             }
         } else if (indexAND > 0) {
-            if (seekBrackets()[1] > 0 && indexAND < seekBrackets()[1]) {
+            if (seekParentheses()[1] > 0 && indexAND < seekParentheses()[1]) {
                 return indexAND;
-            } else if (seekBrackets()[1] > 0 && indexAND > seekBrackets()[1]) {
+            } else if (seekParentheses()[1] > 0 && indexAND > seekParentheses()[1]) {
                 return -1;
             } else {
                 return indexAND;
