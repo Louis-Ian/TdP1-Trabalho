@@ -136,7 +136,7 @@ public class FormulaTreatment {
     }
 
     // Calls the methods that solve for the different operations, according to logic precedence
-    private void solveFormula() {  
+    private void solveFormula() {   //TODO: refactor
         formulaValues = new String[totalLines][1];
         for (int i = 0; i < totalLines; i++) {
             solvedFormula = formula;
@@ -181,7 +181,7 @@ public class FormulaTreatment {
         }
     }
 
-    // Returns an array with the opening and closing brackets indexes, according to the logic precedence
+    // Returns an array with the opening and closing brackets indexes, according to logic precedence
     // Returns {-1, -1} when there are no brackets
     private int[] seekBrackets() {
         int[] bracketsIndex = {-1, -1};
@@ -189,14 +189,13 @@ public class FormulaTreatment {
         
         if(bracketsIndex[0] >= 0){
             bracketsIndex[1] = solvedFormula.indexOf(")", bracketsIndex[0]);
+            if(bracketsIndex[1] >= 0 && bracketsIndex[1] > bracketsIndex[0]){
+                return bracketsIndex;
+            }
         }
-        
-        if(bracketsIndex[0] >= 0 && bracketsIndex[1] >= 0){
-            return bracketsIndex;
-        } else {
-            int[] r = {-1, -1};
-            return r;
-        }
+            
+        int[] r = {-1, -1};
+        return r;
     }
 
     // Returns the index of the ¬ (NOT) operator, according to the logic precedence
