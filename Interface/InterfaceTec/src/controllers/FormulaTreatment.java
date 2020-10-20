@@ -176,8 +176,8 @@ public class FormulaTreatment {
                     solveANDOperation(i);
                 }
             }
+            
             formulaValues[i][0] = solvedFormula;
-            //values[i][length] = StrToBool(solvedFormula);
         }
     }
 
@@ -185,14 +185,14 @@ public class FormulaTreatment {
     // Returns {-1, -1} when there are no parentheses
     private int[] seekParentheses() {
         int[] parenthesesIndex = {-1, -1};
-        parenthesesIndex[1] = solvedFormula.indexOf(")");
-        parenthesesIndex[0] = solvedFormula.substring(0, parenthesesIndex[1]).lastIndexOf("(");
         
-        if(parenthesesIndex[0] >= 0){
-            parenthesesIndex[1] = solvedFormula.indexOf(")", parenthesesIndex[0]);
-            if(parenthesesIndex[1] >= 0 && parenthesesIndex[1] > parenthesesIndex[0]){
-                return parenthesesIndex;
-            }
+        parenthesesIndex[1] = solvedFormula.indexOf(")");
+        if(parenthesesIndex[1] > 0){
+            parenthesesIndex[0] = solvedFormula.substring(0, parenthesesIndex[1]).lastIndexOf("(");
+        }
+        
+        if(parenthesesIndex[0] >= 0 && parenthesesIndex[1] >= 0){
+            return parenthesesIndex;
         }
             
         int[] r = {-1, -1};
@@ -230,12 +230,13 @@ public class FormulaTreatment {
     
     // Returns the index of the AND operator, according to logic precedence
     private int seekANDOperator() {
-        int indexAND = solvedFormula.indexOf(" AND ", seekParentheses()[0]);
-
+        int[] parentheses = seekParentheses();
+        int indexAND = solvedFormula.indexOf(" AND ", parentheses[0]);
+        
         if (indexAND > 0) {
-            if (seekParentheses()[1] > 0 && indexAND < seekParentheses()[1]) {
+            if (parentheses[1] > 0 && parentheses[0] < indexAND && indexAND < parentheses[1]) {
                 return indexAND;
-            } else if (seekParentheses()[1] > 0 && indexAND > seekParentheses()[1]) {
+            } else if (parentheses[1] > 0 && indexAND > parentheses[1]) {
                 return -1;
             } else {
                 return indexAND;
@@ -245,15 +246,15 @@ public class FormulaTreatment {
         return -1;
     }
     
-    // Changes the "X and Y" or the "X or Y" substring to it's boolean value, according to the logic precedence
+    // Changes the "X and Y"  substring to it's boolean value, according to logic precedence
     // and to the current values of X and Y in an specific line of the table
     private void solveANDOperation(int line) {
         int operationIndex = seekANDOperator();
-        String op = solvedFormula.substring(operationIndex, operationIndex + 4);
+        String op = solvedFormula.substring(operationIndex, operationIndex + 5);
 
         IOperation clauseV;
 
-        if (" AND".equals(op)) {
+        if (" AND ".equals(op)) {
             char leftClause = solvedFormula.charAt(operationIndex - 1);
             char rightClause = solvedFormula.charAt(operationIndex + 5);
 
@@ -264,9 +265,38 @@ public class FormulaTreatment {
 
             String value = BoolToStr(clauseV.value());
             solvedFormula = solvedFormula.substring(0, operationIndex - 1) + value + solvedFormula.substring(operationIndex + 6);
-        } else {
+        }
+    }
+    
+    // Returns the index of the OR operator, according to logic precedence
+    private int seekOROperator() {
+        int[] parentheses = seekParentheses();
+        int indexOR = solvedFormula.indexOf(" OR ", parentheses[0]);
+        
+        if (indexOR > 0) {
+            if (parentheses[1] > 0 && parentheses[0] < indexOR && indexOR < parentheses[1]) {
+                return indexOR;
+            } else if (parentheses[1] > 0 && indexOR > parentheses[1]) {
+                return -1;
+            } else {
+                return indexOR;
+            }
+        }
+
+        return -1;
+    }
+    
+    // Changes the "X or Y" substring to it's boolean value, according to logic precedence
+    // and to the current values of X and Y in an specific line of the table
+    private void solveOROperation(int line) {
+        int operationIndex = seekOROperator();
+        String op = solvedFormula.substring(operationIndex, operationIndex + 4);
+
+        IOperation clauseV;
+
+        if (" OR ".equals(op)) {
             char leftClause = solvedFormula.charAt(operationIndex - 1);
-            char rightClause = solvedFormula.charAt(operationIndex + 4);
+            char rightClause = solvedFormula.charAt(operationIndex + 5);
 
             clauseV = new Or(
                     new Proposition(getClauseBool(line, leftClause)),
@@ -276,54 +306,9 @@ public class FormulaTreatment {
             String value = BoolToStr(clauseV.value());
             solvedFormula = solvedFormula.substring(0, operationIndex - 1) + value + solvedFormula.substring(operationIndex + 5);
         }
-
     }
     
-    // Returns the index of the AND or OR operator, according to the logic precedence
-    private int seekOROperator() {
-        int indexAND = solvedFormula.indexOf(" AND ", seekParentheses()[0]);
-        int indexOR = solvedFormula.indexOf(" OR ", seekParentheses()[0]);
-
-        if (indexOR > 0 && indexAND > 0) {
-            if (indexOR < indexAND) {
-                if (seekParentheses()[1] > 0 && indexOR < seekParentheses()[1]) {
-                    return indexOR;
-                } else if (seekParentheses()[1] > 0 && indexOR > seekParentheses()[1]) {
-                    return -1;
-                } else {
-                    return indexOR;
-                }
-            } else if (indexAND < indexOR) {
-                if (seekParentheses()[1] > 0 && indexAND < seekParentheses()[1]) {
-                    return indexAND;
-                } else if (seekParentheses()[1] > 0 && indexAND > seekParentheses()[1]) {
-                    return -1;
-                } else {
-                    return indexAND;
-                }
-            }
-        } else if (indexOR > 0) {
-            if (seekParentheses()[1] > 0 && indexOR < seekParentheses()[1]) {
-                return indexOR;
-            } else if (seekParentheses()[1] > 0 && indexOR > seekParentheses()[1]) {
-                return -1;
-            } else {
-                return indexOR;
-            }
-        } else if (indexAND > 0) {
-            if (seekParentheses()[1] > 0 && indexAND < seekParentheses()[1]) {
-                return indexAND;
-            } else if (seekParentheses()[1] > 0 && indexAND > seekParentheses()[1]) {
-                return -1;
-            } else {
-                return indexAND;
-            }
-        }
-
-        return -1;
-    }
-    
-    // Changes the "X and Y" or the "X or Y" substring to it's boolean value, according to the logic precedence
+    // Changes the "X and Y" or the "X or Y" substring to it's boolean value, according to logic precedence
     // and to the current values of X and Y in an specific line of the table
     private void solveTier3Operation(int line) {
         int operationIndex = seekANDOperator();
@@ -357,7 +342,7 @@ public class FormulaTreatment {
 
     }
 
-//    // Changes the "X -> Y" or the "X <-> Y" substring to it's boolean value, according to the logic precedence
+//    // Changes the "X -> Y" or the "X <-> Y" substring to it's boolean value, according to logic precedence
 //    // and to the current values of X and Y in an specific line of the table
 //    private int seekTier4Operator(){
 //        int indexAND = formula.indexOf(" AND ", seekTier1Operator()[0]);
