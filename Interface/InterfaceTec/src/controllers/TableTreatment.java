@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 public class TableTreatment {
 
+    // Get 2d array of strings inside truth table
     public static String[][] tableRowConstructor(String[][] A, String[][] B) {
-
         String[][] values = new String[A.length][A[0].length + B[0].length];
         for (int i = 0; i < values.length; i++) {
             for (int j = 0; j < values[i].length; j++) {
@@ -15,11 +15,11 @@ public class TableTreatment {
                     values[i][j] = B[i][j - A[0].length];
                 }
             }
-
         }
         return values;
     }
 
+    // Get list with all headers inside truth table
     public static String[] tableHeaderConstructor(String[] A, String[] B) {
 
         String[] values = new String[A.length + B.length];
@@ -33,7 +33,7 @@ public class TableTreatment {
         return values;
     }
 
-    //UNION OF HEADER + ROWS
+    // Get table with union of header and rows of table
     public static String[][] tableConstructor(String[] Header, String[][] Rows) {
 
         String[][] values = new String[Rows.length + 1][Header.length];
@@ -45,12 +45,12 @@ public class TableTreatment {
                     values[i][j] = Rows[i - 1][j];
                 }
             }
-
         }
         mostrarTable(values);
         return values;
     }
 
+    // Create table with all values set to '0'
     public static String[][] tableGenerator(int linha, int coluna) {
         String[][] values = new String[linha][coluna];
         for (String[] value : values) {
@@ -59,6 +59,7 @@ public class TableTreatment {
         return values;
     }
 
+    // Print table in 2d array format
     public static void mostrarTable(String[][] matriz) {
         for (String[] strings : matriz) {
             for (String string : strings) {

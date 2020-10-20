@@ -14,13 +14,13 @@ public class FormulaTreatment {
     private int totalLines;
     private ArrayList<String> list;
 
-    // General function that calls other functions, outputting clean formula
+    // General function that calls auxiliary functions, cleaning and outputting table with right format
     public FormulaTreatment(String formula) {
         this.formula = formula;
         getClauses();
         this.length = getTotalClauses();
         this.totalLines = (int) Math.pow(2, length);
-        generateFormulaValues();
+        boolean[][] val = generateFormulaValues();
         solveFormula();
     }
 
@@ -57,7 +57,7 @@ public class FormulaTreatment {
         return list.size();
     }
 
-    // Get all the clauses present in the formula
+    // Get all the clauses used in the formula
     private void getClauses() {
         String[] clauses = formula.replace("(", "").replace(")", "")
                 .replace("¬", "").replace("OR ", "").replace("AND ", "")

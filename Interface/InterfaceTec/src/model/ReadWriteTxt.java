@@ -1,20 +1,15 @@
 package model;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 
+/** Read, write and overwrite truth table in .txt files to save values */
 public class ReadWriteTxt {
 
     private File file;
     private FileOutputStream fileOutput;
     private FileInputStream fileInput;
 
-    //Saving truth table in txt
+    /** Save truth table in .txt file */
     public boolean toSave(String path, String name, String formula, String[] tableHeader, String[][] tableRows) {
         String pathFull = path + "\\" + name + ".txt";
         try {
@@ -43,8 +38,8 @@ public class ReadWriteTxt {
         return false;
     }
 
-    //Retrieving formula from txt
-    public String toRecover(String path) {;
+    /** Retrieve formula from .txt file */
+    public String toRecover(String path) {
         try {
             fileInput = new FileInputStream(path);
             InputStreamReader reader = new InputStreamReader(fileInput);
