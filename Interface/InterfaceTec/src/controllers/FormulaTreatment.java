@@ -289,27 +289,6 @@ public class FormulaTreatment {
 
     }
 
-//    // Changes the "X -> Y" or the "X <-> Y" substring to it's boolean value, according to the logic precedence
-//    // and to the current values of X and Y in an specific line of the table
-//    private int seekTier4Operator(){
-//        int indexAND = formula.indexOf(" AND ", seekTier1Operator()[0]);
-//        int indexOR = formula.indexOf(" OR ", seekTier1Operator()[0]);
-//        
-//        if(indexOR < indexAND && indexOR < seekTier1Operator()[1]){
-//            return indexOR;
-//        } else if(indexAND < indexOR && indexAND < seekTier1Operator()[1]) {
-//            return indexAND;
-//        } else {
-//            return indexAND;
-//        }
-//    }
-//    
-//    private boolean solveTier4Operation(){
-//        int operationIndex = seekTier2Operator();
-//        
-//        return false;
-//    }
-
     // Prints the table on the console
     public void showTable(String[][] matrix) {
         for (String[] strings : matrix) {
