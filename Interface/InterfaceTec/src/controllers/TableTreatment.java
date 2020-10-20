@@ -1,5 +1,7 @@
 package controllers;
 
+import java.util.Arrays;
+
 public class TableTreatment {
 
     public static String[][] tableRowConstructor(String[][] A, String[][] B) {
@@ -51,18 +53,16 @@ public class TableTreatment {
 
     public static String[][] tableGenerator(int linha, int coluna) {
         String[][] values = new String[linha][coluna];
-        for (int i = 0; i < values.length; i++) {
-            for (int j = 0; j < values[i].length; j++) {
-                values[i][j] = "0";
-            }
+        for (String[] value : values) {
+            Arrays.fill(value, "0");
         }
         return values;
     }
 
     public static void mostrarTable(String[][] matriz) {
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[i].length; j++) {
-                System.out.print(matriz[i][j] + " ");
+        for (String[] strings : matriz) {
+            for (String string : strings) {
+                System.out.print(string + " ");
             }
             System.out.println();
         }
