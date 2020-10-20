@@ -3,16 +3,20 @@ package view;
 import controllers.TableTreatment;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.JToolTip;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
 import model.ReadWriteTxt;
+import javax.swing.table.JTableHeader;
 
 public class Result extends javax.swing.JFrame {
 
@@ -68,9 +72,9 @@ public class Result extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(load_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(509, 509, 509)
+                .addGap(556, 556, 556)
                 .addComponent(result_save, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13))
         );
@@ -81,7 +85,7 @@ public class Result extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(result_save, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(load_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(394, Short.MAX_VALUE))
+                .addContainerGap(449, Short.MAX_VALUE))
         );
 
         pack();
@@ -155,16 +159,31 @@ public class Result extends javax.swing.JFrame {
         
         Table.setRowHeight(40); 
         Table.setAutoResizeMode(JTable.	AUTO_RESIZE_ALL_COLUMNS);
+
+        //Adding an event that shows a tip when hovering over the tabel header
+        JTableHeader header = Table.getTableHeader();
+        header.addMouseMotionListener(new MouseMotionAdapter()
+        {
+            public void mouseMoved(MouseEvent e) {
+                    JTableHeader tb = (JTableHeader) e.getSource();
+                    int coluna = tb.columnAtPoint(e.getPoint());  
+                    String tip = tableHeader[coluna];
+                    for (int i = 0; i < Table.getModel().getColumnCount(); i++) {
+                        header.setToolTipText(tip);
+                    }
+                    header.getToolTipText();                       
+            }
+        });
         
-
-
+        
         DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         headerRenderer.setBackground(Color.WHITE);
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
-
+       
         for (int i = 0; i < Table.getModel().getColumnCount(); i++) {
             Table.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
+            Table.getColumnModel().getColumn(i).setHeaderRenderer(centerRenderer);
             Table.getColumnModel().getColumn(i).setHeaderRenderer(centerRenderer);
             Table.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }

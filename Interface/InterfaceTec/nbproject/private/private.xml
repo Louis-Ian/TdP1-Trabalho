@@ -2,18 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/louis/GitHub/TdP1-Trabalho/Interface/InterfaceTec/src/model/IOperation.java</file>
-            <file>file:/C:/Users/louis/GitHub/TdP1-Trabalho/Interface/InterfaceTec/src/model/Not.java</file>
-            <file>file:/C:/Users/louis/GitHub/TdP1-Trabalho/Interface/InterfaceTec/src/view/Result.java</file>
-            <file>file:/C:/Users/louis/GitHub/TdP1-Trabalho/Interface/InterfaceTec/src/model/Proposition.java</file>
-            <file>file:/C:/Users/louis/GitHub/TdP1-Trabalho/Interface/InterfaceTec/src/controllers/FormulaTreatment.java</file>
-            <file>file:/C:/Users/louis/GitHub/TdP1-Trabalho/Interface/InterfaceTec/src/view/NewFormula.java</file>
-            <file>file:/C:/Users/louis/GitHub/TdP1-Trabalho/Interface/InterfaceTec/src/controllers/TableTreatment.java</file>
-            <file>file:/C:/Users/louis/GitHub/TdP1-Trabalho/Interface/InterfaceTec/src/model/And.java</file>
-            <file>file:/C:/Users/Breno/Desktop/Trabalho/TdP1-Trabalho/Interface/InterfaceTec/src/view/LoadFormula.java</file>
-            <file>file:/C:/Users/Breno/Desktop/Trabalho/TdP1-Trabalho/Interface/InterfaceTec/src/model/ReadWriteTxt.java</file>
-            <file>file:/C:/Users/Breno/Desktop/Trabalho/TdP1-Trabalho/Interface/InterfaceTec/src/utils/OptionDialogUtils.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
