@@ -1,7 +1,8 @@
 package controllers;
 
-import java.util.ArrayList;
 import model.*;
+
+import java.util.ArrayList;
 
 public class FormulaTreatment {
 
@@ -13,6 +14,7 @@ public class FormulaTreatment {
     private int totalLines;
     private ArrayList<String> list;
 
+    // General function that calls other functions, outputting clean formula
     public FormulaTreatment(String formula) {
         this.formula = formula;
         getClauses();
@@ -33,14 +35,12 @@ public class FormulaTreatment {
         Formula[0] = this.formula;
 
         // Clauses + Formulas Header
-        String[] tableHeader = TableTreatment.tableHeaderConstructor(Clauses, Formula);
-
-        return tableHeader;
+        return TableTreatment.tableHeaderConstructor(Clauses, Formula);
     }
 
     // Get the truth table in string format
     public String[][] getTableBody() {
-        String stringValues[][] = new String[totalLines][length];
+        String[][] stringValues = new String[totalLines][length];
         for (int i = 0; i < stringValues.length; i++) {
             for (int j = 0; j < stringValues[i].length; j++) {
                 if (values[i][j]) {
@@ -50,8 +50,7 @@ public class FormulaTreatment {
                 }
             }
         }
-        String[][] tableRows = TableTreatment.tableRowConstructor(stringValues, formulaValues);
-        return tableRows;
+        return TableTreatment.tableRowConstructor(stringValues, formulaValues);
     }
 
     private int getTotalClauses() {
@@ -64,9 +63,9 @@ public class FormulaTreatment {
                 .replace("¬", "").replace("OR ", "").replace("AND ", "")
                 .split(" ");
         list = new ArrayList<>();
-        for (int i = 0; i < clauses.length; i++) {
-            if (!list.contains(clauses[i])) {
-                list.add(clauses[i]);
+        for (String clause : clauses) {
+            if (!list.contains(clause)) {
+                list.add(clause);
             }
         }
     }
@@ -84,8 +83,6 @@ public class FormulaTreatment {
                 return values[line][this.list.indexOf("D")];
             case 'E':
                 return values[line][this.list.indexOf("E")];
-            case 'T':
-                return true;
             case 'F':
                 return false;
             default:
@@ -104,11 +101,7 @@ public class FormulaTreatment {
 
     // Converts the String on the table to it's boolean value
     public boolean StrToBool(String s) {
-        if (s.equals("T")) {
-            return true;
-        } else {
-            return false;
-        }
+        return s.equals("T");
     }
 
     // Generates all the combinations of true and false for the amount of clauses
@@ -136,7 +129,7 @@ public class FormulaTreatment {
     }
 
     // Calls the methods that solve for the different operators, according to logic precedence
-    private void solveFormula() {  
+    private void solveFormula() {
         formulaValues = new String[totalLines][1];
         for (int i = 0; i < totalLines; i++) {
             solvedFormula = formula;
@@ -217,7 +210,7 @@ public class FormulaTreatment {
 
         solvedFormula = solvedFormula.substring(0, operationIndex) + value + solvedFormula.substring(operationIndex + 2);
     }
-    
+
     // Returns the index of the AND or OR operator, according to the logic precedence
     private int seekTier3Operator() {
         int indexAND = solvedFormula.indexOf(" AND ", seekTier1Operator()[0]);
@@ -261,7 +254,7 @@ public class FormulaTreatment {
 
         return -1;
     }
-    
+
     // Changes the "X and Y" or the "X or Y" substring to it's boolean value, according to the logic precedence
     // and to the current values of X and Y in an specific line of the table
     private void solveTier3Operation(int line) {
@@ -316,12 +309,12 @@ public class FormulaTreatment {
 //        
 //        return false;
 //    }
-    
+
     // Prints the table on the console
     public void showTable(String[][] matrix) {
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                System.out.print(matrix[i][j] + " ");
+        for (String[] strings : matrix) {
+            for (String string : strings) {
+                System.out.print(string + " ");
             }
             System.out.println();
         }
